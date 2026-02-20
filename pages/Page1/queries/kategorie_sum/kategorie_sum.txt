@@ -1,0 +1,8 @@
+select 
+ka.aname Kategorie,
+to_char(sum(a.betrag), 'FM€ 999G999G999D00') AS Betrag
+from ausgabe a
+inner join kategorie ka on a.fk_kategorie_sid = ka.sid and ka.fk_recordstate_sid = 0
+where a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', current_date)::date
+group by ka.aname
+order by sum(a.betrag) desc;

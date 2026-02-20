@@ -1,0 +1,16 @@
+INSERT INTO transaktion (
+  fk_konto_von_sid,
+  fk_konto_zu_sid,
+  betrag,
+  datum,
+  fk_schuldner_sid,
+  beschreibung
+)
+VALUES (
+  {{ Select_vonKonto.selectedOptionValue }},
+  {{ Select_zuKonto.selectedOptionValue }},
+  {{ InputBetrag_tra.text }},
+  {{ DatePicker_tra.selectedDate }},
+  {{ Select_Schuldner.selectedOptionValue }},
+  {{ InputBeschreibung_tra.text }}
+);

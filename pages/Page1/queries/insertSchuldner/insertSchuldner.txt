@@ -1,0 +1,4 @@
+INSERT INTO schuldner (aname)
+VALUES (
+  {{ InputSchuldner.text }}
+);

@@ -1,0 +1,3 @@
+SELECT sid, aname
+FROM schuldner
+ORDER BY aname;

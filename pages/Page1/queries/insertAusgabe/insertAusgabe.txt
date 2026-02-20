@@ -1,0 +1,8 @@
+INSERT INTO ausgabe (artikel, betrag, fk_kategorie_sid, datum, fk_konto_sid)
+VALUES (
+  {{ InputArtikel_aus.selectedOptionValue }},
+  {{ InputBetrag_aus.text }},
+  {{ SelectKategorie.selectedOptionValue }}
+  {{ DatePicker_aus.selectedDate }},
+  {{ SelectKonto_aus.selectedOptionValue }}
+);

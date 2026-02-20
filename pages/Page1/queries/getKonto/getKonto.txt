@@ -1,0 +1,3 @@
+SELECT sid, aname
+FROM konto
+ORDER BY aname;

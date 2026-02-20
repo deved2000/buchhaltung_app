@@ -1,0 +1,3 @@
+SELECT sid, aname
+FROM kategorie
+ORDER BY aname;
