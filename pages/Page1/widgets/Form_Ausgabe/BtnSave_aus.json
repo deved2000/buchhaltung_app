@@ -31,7 +31,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{insertEinnahme.run().then(() => {\n  showAlert('Einnahme gespeichert ✅', 'info');\n  removeValue(\"\");\n});}}",
+  "onClick": "{{insertAusgabe.run().then(() => {\n  showAlert('Ausgabe gespeichert ✅', 'info');\n  removeValue(\"\");\n});}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "zrvnrm08rw",

@@ -1,7 +1,7 @@
 INSERT INTO einnahme (fk_quelle_sid, beschreibung, betrag, datum, fk_konto_sid)
 VALUES (
   {{ SelectQuelle.selectedOptionValue }},
-	{{ InputBeschreibung_ein.text.selectedOptionValue }},
+	{{ InputBeschreibung_ein.text}},
   {{ InputBetrag_ein.text }},
   {{ DatePicker_ein.selectedDate }},
   {{ SelectKonto_ein.selectedOptionValue }}

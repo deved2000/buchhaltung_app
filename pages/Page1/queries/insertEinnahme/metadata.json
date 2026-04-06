@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO einnahme (fk_quelle_sid, beschreibung, betrag, datum, fk_konto_sid)\nVALUES (\n  {{ SelectQuelle.selectedOptionValue }},\n\t{{ InputBeschreibung_ein.text.selectedOptionValue }},\n  {{ InputBetrag_ein.text }},\n  {{ DatePicker_ein.selectedDate }},\n  {{ SelectKonto_ein.selectedOptionValue }}\n);",
+      "body": "INSERT INTO einnahme (fk_quelle_sid, beschreibung, betrag, datum, fk_konto_sid)\nVALUES (\n  {{ SelectQuelle.selectedOptionValue }},\n\t{{ InputBeschreibung_ein.text}},\n  {{ InputBetrag_ein.text }},\n  {{ DatePicker_ein.selectedDate }},\n  {{ SelectKonto_ein.selectedOptionValue }}\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
