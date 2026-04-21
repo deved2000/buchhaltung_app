@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "select \nka.aname Kategorie,\nto_char(sum(a.betrag), 'FM€ 999G999G990D00') AS Betrag\nfrom ausgabe a\ninner join kategorie ka on a.fk_kategorie_sid = ka.sid and ka.fk_recordstate_sid = 0\nwhere a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', current_date)::date\ngroup by ka.aname\norder by sum(a.betrag) desc;",
+      "body": "SELECT \n    ka.aname AS Kategorie,\n    to_char(sum(a.betrag), 'FM€ 999G999G990D00') AS Betrag\nFROM ausgabe a\nINNER JOIN kategorie ka ON a.fk_kategorie_sid = ka.sid AND ka.fk_recordstate_sid = 0\nWHERE a.fk_recordstate_sid = 0 \n    AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\nGROUP BY ka.aname\nORDER BY sum(a.betrag) DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "kategorie_sum",
     "pageId": "Page1",
     "runBehaviour": "AUTOMATIC",
