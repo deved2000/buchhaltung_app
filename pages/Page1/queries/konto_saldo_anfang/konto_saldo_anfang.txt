@@ -1,0 +1,6 @@
+SELECT 
+    konto_name,
+    saldo_anfang AS saldo
+FROM v_monatssalden
+WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+ORDER BY konto_name;

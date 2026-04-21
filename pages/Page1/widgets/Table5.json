@@ -35,7 +35,7 @@
     "konto_name",
     "saldo"
   ],
-  "columnUpdatedAt": 1771589465259,
+  "columnUpdatedAt": 1776793608260,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -56,20 +56,16 @@
       "key": "boxShadow"
     },
     {
+      "key": "tableData"
+    },
+    {
       "key": "primaryColumns.konto_name.computedValue"
     },
     {
       "key": "primaryColumns.saldo.computedValue"
-    },
-    {
-      "key": "tableData"
     }
   ],
-  "dynamicPropertyPathList": [
-    {
-      "key": "tableData"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "enableClientSideSearch": true,
   "endOfData": false,
@@ -83,16 +79,16 @@
   "isVisibleFilters": false,
   "isVisiblePagination": true,
   "isVisibleSearch": false,
-  "key": "p2ua0wgih1",
+  "key": "e4u758msmr",
   "label": "Data",
-  "leftColumn": 35,
+  "leftColumn": 8,
   "minWidth": 450,
-  "mobileBottomRow": 28,
-  "mobileLeftColumn": 0,
-  "mobileRightColumn": 34,
-  "mobileTopRow": 0,
+  "mobileBottomRow": 32,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 35,
+  "mobileTopRow": 4,
   "needsErrorInfo": false,
-  "parentColumnSpace": 19.875,
+  "parentColumnSpace": 19.8125,
   "parentId": "0",
   "parentRowSpace": 10,
   "primaryColumns": {
@@ -101,7 +97,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"konto_name\"])) : konto_name })()}}",
+      "computedValue": "{{(() => { const tableData = Table5.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"konto_name\"])) : konto_name })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -131,8 +127,8 @@
       "alias": "saldo",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"saldo\"])) : saldo })()}}",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table5.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"saldo\"])) : saldo })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -161,15 +157,15 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 53,
+  "rightColumn": 24,
   "searchKey": "",
-  "tableData": "{{konto_saldo_ende.data}}",
+  "tableData": "{{konto_saldo_anfang.data}}",
   "textSize": "0.875rem",
   "topRow": 4,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "be9w7kvist",
-  "widgetName": "Table1"
+  "widgetId": "a4kyinpvtb",
+  "widgetName": "Table5"
 }

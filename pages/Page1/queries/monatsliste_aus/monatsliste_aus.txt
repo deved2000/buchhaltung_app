@@ -2,4 +2,4 @@ select a.artikel, to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag, k.aname k
 from ausgabe a
 inner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0
 inner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0
-where a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamp)::date;
+where a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date;
