@@ -8,7 +8,7 @@ SELECT
 								ELSE 0
 						END
 				), 0) ,
-		'FM€ 999G999G999D00') AS saldo
+		'FM€ 999G999G990D00') AS saldo
 FROM konto k
 LEFT JOIN v_bewegungen vb
     ON vb.konto_zu_sid = k.sid
