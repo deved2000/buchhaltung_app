@@ -9,7 +9,7 @@ INSERT INTO transaktion (
 VALUES (
   {{ Select_vonKonto.selectedOptionValue }},
   {{ Select_zuKonto.selectedOptionValue }},
-  {{ InputBetrag_tra.text }},
+	{{Number(InputBetrag_tra.text.replace(',', '.'))}}::numeric,
   {{ DatePicker_tra.selectedDate }},
   {{ Select_Schuldner.selectedOptionValue }},
   {{ InputBeschreibung_tra.text }}

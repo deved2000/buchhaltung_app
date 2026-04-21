@@ -1,7 +1,7 @@
 INSERT INTO ausgabe (artikel, betrag, fk_kategorie_sid, datum, fk_konto_sid)
 VALUES (
   {{ InputArtikel_aus.text }},
-  {{ InputBetrag_aus.text }},
+	{{Number(InputBetrag_aus.text.replace(',', '.'))}}::numeric,
   {{ SelectKategorie.selectedOptionValue }},
   {{ DatePicker_aus.selectedDate }},
   {{ SelectKonto_aus.selectedOptionValue }}
