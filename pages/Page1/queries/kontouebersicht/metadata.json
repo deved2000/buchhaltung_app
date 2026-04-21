@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    k.aname AS konto_name,\n    COALESCE(SUM(\n        CASE\n            WHEN vb.konto_zu_sid = k.sid THEN vb.betrag\n            WHEN vb.konto_von_sid = k.sid THEN -vb.betrag\n            ELSE 0\n        END\n    ), 0) AS saldo\nFROM konto k\nLEFT JOIN v_bewegungen vb\n    ON vb.konto_zu_sid = k.sid\n    OR vb.konto_von_sid = k.sid\nGROUP BY k.sid, k.aname\nORDER BY k.aname;",
+      "body": "SELECT\n    k.aname AS konto_name,\n    to_char(\n\t\t\t\tCOALESCE(SUM(\n\t\t\t\t\t\tCASE\n\t\t\t\t\t\t\t\tWHEN vb.konto_zu_sid = k.sid THEN vb.betrag\n\t\t\t\t\t\t\t\tWHEN vb.konto_von_sid = k.sid THEN -vb.betrag\n\t\t\t\t\t\t\t\tELSE 0\n\t\t\t\t\t\tEND\n\t\t\t\t), 0) ,\n\t\t'FM€ 999G999G999D00') AS saldo\nFROM konto k\nLEFT JOIN v_bewegungen vb\n    ON vb.konto_zu_sid = k.sid\n    OR vb.konto_von_sid = k.sid\nGROUP BY k.sid, k.aname\nORDER BY k.aname;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
