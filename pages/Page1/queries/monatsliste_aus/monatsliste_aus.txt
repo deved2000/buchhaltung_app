@@ -1,4 +1,13 @@
-select a.artikel, to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag, k.aname kategorie, a.datum, ko.aname konto, to_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat
+select
+a.artikel,
+a.betrag AS betrag_raw,
+to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag,
+k.aname kategorie,
+ a.fk_kategorie_sid,
+a.datum,
+ko.aname konto,
+ a.fk_konto_sid,
+to_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat
 from ausgabe a
 inner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0
 inner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0

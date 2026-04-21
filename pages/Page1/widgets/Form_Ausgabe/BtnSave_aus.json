@@ -14,6 +14,11 @@
       "key": "borderRadius"
     }
   ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -31,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{insertAusgabe.run().then(() => {\n  showAlert('Ausgabe gespeichert ✅', 'info');\n  removeValue(\"\");\n});}}",
+  "onClick": "{{\n  Object.keys(Table_aus.selectedRow).length > 0\n    ? update_rs_ausgabe.run()\n        .then(() => insertAusgabe.run())\n        .then(() => {\n            monatsliste_aus.run();\n            showAlert('Ausgabe aktualisiert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Aktualisieren ❌', 'error'))\n    : insertAusgabe.run()\n        .then(() => {\n            monatsliste_aus.run();\n            showAlert('Ausgabe gespeichert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Speichern ❌', 'error'))\n}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "zrvnrm08rw",

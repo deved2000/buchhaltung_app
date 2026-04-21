@@ -1,10 +1,12 @@
-select q.aname Quelle,
+select
+q.aname Quelle,
+e.betrag AS betrag_raw,
 to_char(e.betrag, 'FM€ 999G999G999D00') Betrag,
 e.beschreibung Beschreibung, 
 e.datum Datum,
 ko.aname Konto,
+ko.fk_konto_sid,
 to_char(date_trunc('month', e.monat)::date, 'FMMonth YY') monat
-
 from einnahme e
 inner join quelle q on e.fk_quelle_sid = q.sid and q.fk_recordstate_sid = 0
 inner join konto ko on e.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0

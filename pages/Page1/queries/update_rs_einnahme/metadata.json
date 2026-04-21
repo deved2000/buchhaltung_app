@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_0fb7136c-c6da-4c99-b3bb-06b2134632f4",
-  "id": "Page1_insertEinnahme",
+  "gitSyncId": "69978066a9cbc329806ad520_ba463460-72d6-4cd3-a56e-fe000d0cb6f9",
+  "id": "Page1_update_rs_einnahme",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO einnahme (fk_quelle_sid, beschreibung, betrag, datum, fk_konto_sid)\nVALUES (\n    {{SelectQuelle.selectedOptionValue}},\n    {{InputBeschreibung_ein.text}},\n    {{Number(InputBetrag_ein.text.replace(',', '.'))}}::numeric,\n    {{DatePicker_ein.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',\n    {{SelectKonto_ein.selectedOptionValue}}\n);",
+      "body": "UPDATE einnahme SET fk_recordstate_sid = 2\nWHERE sid = {{Table_ein.selectedRow.sid}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "insertEinnahme",
+    "name": "update_rs_einnahme",
     "pageId": "Page1",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
