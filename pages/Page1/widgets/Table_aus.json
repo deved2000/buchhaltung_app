@@ -40,9 +40,10 @@
     "monat",
     "betrag_raw",
     "fk_kategorie_sid",
-    "fk_konto_sid"
+    "fk_konto_sid",
+    "sid"
   ],
-  "columnUpdatedAt": 1776804722880,
+  "columnUpdatedAt": 1776807812383,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -91,6 +92,9 @@
     },
     {
       "key": "primaryColumns.fk_konto_sid.computedValue"
+    },
+    {
+      "key": "primaryColumns.sid.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -398,6 +402,37 @@
       "label": "monat",
       "notation": "standard",
       "originalId": "monat",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "sid": {
+      "alias": "sid",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table_aus.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"sid\"])) : sid })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "sid",
+      "index": 0,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "sid",
+      "notation": "standard",
+      "originalId": "sid",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,

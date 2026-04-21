@@ -8,13 +8,16 @@
   "boxShadow": "none",
   "decimals": 2,
   "defaultCurrencyCode": "EUR",
-  "defaultText": "",
+  "defaultText": "{{ Table_ein.selectedRow.betrag_raw }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",

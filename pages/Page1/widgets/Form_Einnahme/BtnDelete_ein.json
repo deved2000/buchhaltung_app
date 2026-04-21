@@ -1,0 +1,61 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 39,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": "{{ Object.keys(Table_ein.selectedRow).length > 0 }}",
+  "key": "dqgpgivi01",
+  "leftColumn": 3,
+  "minWidth": 120,
+  "mobileBottomRow": 39,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 18,
+  "mobileTopRow": 35,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  del_einnahme.run()\n    .then(() => {\n        monatsliste_ein.run();\n        showAlert('Einnahme gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "parentColumnSpace": 8.7109375,
+  "parentId": "66owns0dma",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 19,
+  "text": "Delete",
+  "topRow": 35,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "rjxhh022yu",
+  "widgetName": "BtnDelete_ein"
+}

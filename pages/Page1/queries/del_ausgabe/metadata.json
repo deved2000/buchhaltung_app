@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_87d3e83e-aeea-4cce-bb93-e621e401b433",
-  "id": "Page1_Query1",
+  "gitSyncId": "69978066a9cbc329806ad520_1bb2c216-1c68-445d-ab00-dc6e63e5c3b1",
+  "id": "Page1_del_ausgabe",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "",
+      "body": "UPDATE ausgabe SET fk_recordstate_sid = 2\nWHERE sid = {{Table_aus.selectedRow.sid}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,8 +22,12 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "Query1",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "del_ausgabe",
     "pageId": "Page1",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

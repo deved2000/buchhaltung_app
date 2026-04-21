@@ -1,4 +1,5 @@
 select
+a.sid,
 a.artikel,
 a.betrag AS betrag_raw,
 to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag,

@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 27,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n  Object.keys(Table_ein.selectedRow).length > 0 \n    ? Table_ein.selectedRow.fk_quelle_sid \n    : \"\"\n))(SelectQuelle.options, SelectQuelle.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,6 +14,9 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",

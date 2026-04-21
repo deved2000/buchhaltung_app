@@ -1,4 +1,5 @@
 select
+e.sid,
 q.aname Quelle,
 e.betrag AS betrag_raw,
 to_char(e.betrag, 'FM€ 999G999G999D00') Betrag,
