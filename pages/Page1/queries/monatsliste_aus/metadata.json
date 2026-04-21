@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "select a.artikel, to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag, k.aname kategorie, a.datum, ko.aname konto, to_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat\nfrom ausgabe a\ninner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0\ninner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::date)::date;",
+      "body": "select a.artikel, to_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag, k.aname kategorie, a.datum, ko.aname konto, to_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat\nfrom ausgabe a\ninner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0\ninner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamp)::date;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

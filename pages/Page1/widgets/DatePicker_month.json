@@ -5,18 +5,29 @@
   "bottomRow": 48,
   "boxShadow": "none",
   "closeOnSelection": true,
-  "dateFormat": "LL",
+  "dateFormat": "MMMM YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "2026-04-21T14:13:52.208Z",
+  "defaultDate": "{{ new Date() }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    },
+    {
+      "key": "dateFormat"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
   "isDisabled": false,

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "select q.aname Quelle,\nto_char(e.betrag, 'FM€ 999G999G999D00') Betrag,\ne.beschreibung Beschreibung, \ne.datum Datum,\nko.aname Konto,\nto_char(date_trunc('month', e.monat)::date, 'FMMonth YY') monat\n\nfrom einnahme e\ninner join quelle q on e.fk_quelle_sid = q.sid and q.fk_recordstate_sid = 0\ninner join konto ko on e.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere e.fk_recordstate_sid = 0 and e.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::date)::date;",
+      "body": "select q.aname Quelle,\nto_char(e.betrag, 'FM€ 999G999G999D00') Betrag,\ne.beschreibung Beschreibung, \ne.datum Datum,\nko.aname Konto,\nto_char(date_trunc('month', e.monat)::date, 'FMMonth YY') monat\n\nfrom einnahme e\ninner join quelle q on e.fk_quelle_sid = q.sid and q.fk_recordstate_sid = 0\ninner join konto ko on e.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere e.fk_recordstate_sid = 0 and e.monat =  date_trunc('month', {{DatePicker_month.selectedDate}}::timestamp)::date;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

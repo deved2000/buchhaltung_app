@@ -8,4 +8,4 @@ to_char(date_trunc('month', e.monat)::date, 'FMMonth YY') monat
 from einnahme e
 inner join quelle q on e.fk_quelle_sid = q.sid and q.fk_recordstate_sid = 0
 inner join konto ko on e.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0
-where e.fk_recordstate_sid = 0 and e.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::date)::date;
+where e.fk_recordstate_sid = 0 and e.monat =  date_trunc('month', {{DatePicker_month.selectedDate}}::timestamp)::date;
