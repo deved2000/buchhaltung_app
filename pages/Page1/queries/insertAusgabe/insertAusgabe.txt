@@ -3,6 +3,6 @@ VALUES (
   {{ InputArtikel_aus.text }},
 	{{Number(InputBetrag_aus.text.replace(',', '.'))}}::numeric,
   {{ SelectKategorie.selectedOptionValue }},
-  {{ DatePicker_aus.selectedDate }},
+	{{DatePicker_aus.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
   {{ SelectKonto_aus.selectedOptionValue }}
 );
