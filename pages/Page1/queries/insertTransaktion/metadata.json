@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO transaktion (\n  fk_konto_von_sid,\n  fk_konto_zu_sid,\n  betrag,\n  datum,\n  fk_schuldner_sid,\n  beschreibung\n)\nVALUES (\n  {{ Select_vonKonto.selectedOptionValue }},\n  {{ Select_zuKonto.selectedOptionValue }},\n\t{{Number(InputBetrag_tra.text.replace(',', '.'))}}::numeric,\n  {{ DatePicker_tra.selectedDate }},\n  {{ Select_Schuldner.selectedOptionValue }},\n  {{ InputBeschreibung_tra.text }}\n);",
+      "body": "INSERT INTO transaktion (\n  fk_konto_von_sid,\n  fk_konto_zu_sid,\n  betrag,\n  datum,\n  fk_schuldner_sid,\n  beschreibung\n)\nVALUES (\n  {{ Select_vonKonto.selectedOptionValue }},\n  {{ Select_zuKonto.selectedOptionValue }},\n\t{{Number(InputBetrag_tra.text.replace(/\\./g, '').replace(',', '.'))}}::numeric,\n  {{ DatePicker_tra.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',\n  {{ Select_Schuldner.selectedOptionValue }},\n  {{ InputBeschreibung_tra.text }}\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

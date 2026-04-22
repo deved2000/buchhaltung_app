@@ -1,7 +1,7 @@
 INSERT INTO ausgabe (artikel, betrag, fk_kategorie_sid, datum, fk_konto_sid)
 VALUES (
   {{ InputArtikel_aus.text }},
-	{{Number(InputBetrag_aus.text.replace(',', '.'))}}::numeric,
+	{{Number(InputBetrag_aus.text.replace(/\./g, '').replace(',', '.'))}}::numeric,
   {{ SelectKategorie.selectedOptionValue }},
 	{{DatePicker_aus.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
   {{ SelectKonto_aus.selectedOptionValue }}
