@@ -36,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{\n  Table_aus.selectedRow.sid != null && Table_aus.selectedRow.sid !== \"\"\n    ? update_rs_ausgabe.run()\n        .then(() => insertAusgabe.run())\n        .then(() => {\n            monatsliste_aus.run();\n            showAlert('Ausgabe aktualisiert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Aktualisieren ❌', 'error'))\n    : insertAusgabe.run()\n        .then(() => {\n            monatsliste_aus.run();\n            showAlert('Ausgabe gespeichert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Speichern ❌', 'error'))\n}}",
+  "onClick": "{{ jso_speichern_aus.speichern() }}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "zrvnrm08rw",

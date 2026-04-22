@@ -36,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{\n  Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== \"\"\n    ? update_rs_einnahme.run()\n        .then(() => insertEinnahme.run())\n        .then(() => {\n            monatsliste_ein.run();\n            showAlert('Einnahme aktualisiert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Aktualisieren ❌', 'error'))\n    : insertEinnahme.run()\n        .then(() => {\n            monatsliste_ein.run();\n            showAlert('Einnahme gespeichert ✅', 'success');\n            removeValue(\"\");\n        })\n        .catch(() => showAlert('Fehler beim Speichern ❌', 'error'))\n}}",
+  "onClick": "{{ jso_speichern_ein.speichern() }}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "66owns0dma",
