@@ -12,6 +12,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicPropertyPathList": [
@@ -46,7 +49,7 @@
   "resetFormOnClick": true,
   "responsiveBehavior": "hug",
   "rightColumn": 53,
-  "text": "Speichern",
+  "text": "{{ Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== \"\" ? \"Ändern\" : \"Speichern\" }}",
   "topRow": 35,
   "type": "BUTTON_WIDGET",
   "version": 1,

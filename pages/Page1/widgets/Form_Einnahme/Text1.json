@@ -11,6 +11,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -38,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 55,
   "shouldTruncate": false,
-  "text": "Einnahmen eingeben",
+  "text": "{{ Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== \"\" ? \"Eingabe ändern\" : \"Eingabe hinzufügen\" }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

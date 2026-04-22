@@ -14,7 +14,7 @@
       "key": "borderRadius"
     },
     {
-      "key": "isVisible"
+      "key": "isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
@@ -23,6 +23,9 @@
     },
     {
       "key": "isVisible"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -31,9 +34,9 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "{{ Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== \"\" ? false : true }}",
   "isLoading": false,
-  "isVisible": "{{ Object.keys(Table_ein.selectedRow).length > 0 }}",
+  "isVisible": "",
   "key": "dqgpgivi01",
   "leftColumn": 3,
   "minWidth": 120,
@@ -52,7 +55,7 @@
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
   "rightColumn": 19,
-  "text": "Delete",
+  "text": "Löschen",
   "topRow": 35,
   "type": "BUTTON_WIDGET",
   "version": 1,
