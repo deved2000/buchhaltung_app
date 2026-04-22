@@ -45,9 +45,9 @@
   ],
   "columnUpdatedAt": 1776808945212,
   "columnWidthMap": {
-    "beschreibung": 115,
+    "beschreibung": 147,
     "betrag": 97,
-    "datum": 95,
+    "datum": 176,
     "quelle": 113
   },
   "customIsLoading": false,
