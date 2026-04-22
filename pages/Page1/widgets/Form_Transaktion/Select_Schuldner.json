@@ -14,12 +14,18 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -27,7 +33,7 @@
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
-  "isVisible": true,
+  "isVisible": "{{\n  Select_vonKonto.selectedOptionValue == 4 ||\n  Select_zuKonto.selectedOptionValue == 4\n}}",
   "key": "5md8vrl9r0",
   "labelAlignment": "left",
   "labelPosition": "Top",
