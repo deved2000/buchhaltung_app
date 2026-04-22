@@ -41,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 52,
   "shouldTruncate": false,
-  "text": "{{ Table_aus.selectedRow.sid != null && Table_aus.selectedRow.sid !== \"\" ? \"Ausgabe ändern\" : \"Ausgabe hinzufügen\" }}",
+  "text": "{{ Table_aus.selectedRow?.sid != null && Table_aus.selectedRow?.sid !== \"\" ? \"Ausgabe ändern\" : \"Ausgabe hinzufügen\" }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

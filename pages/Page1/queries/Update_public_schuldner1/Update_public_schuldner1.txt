@@ -1,0 +1,1 @@
+UPDATE public.schuldner SET "aname"= '{{Table7.updatedRow.aname}}', "beschreibung"= '{{Table7.updatedRow.beschreibung}}', "erstellt_am"= '{{Table7.updatedRow.erstellt_am}}', "validfrom"= '{{Table7.updatedRow.validfrom}}', "validto"= '{{Table7.updatedRow.validto}}', "fk_recordstate_sid"= '{{Table7.updatedRow.fk_recordstate_sid}}' WHERE "sid"= {{Table7.updatedRow.sid}};

@@ -14,6 +14,11 @@
       "key": "borderRadius"
     }
   ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -31,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{insertTransaktion.run().then(() => {\n  showAlert('Transaktion gespeichert ✅', 'info');\n  removeValue(\"\");\n});}}",
+  "onClick": "{{\njso_speichern_tra.speichern()}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "98froqpgkn",

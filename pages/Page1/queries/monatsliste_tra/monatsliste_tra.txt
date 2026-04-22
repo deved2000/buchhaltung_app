@@ -1,0 +1,20 @@
+SELECT
+    t.sid,
+    t.beschreibung,
+    t.betrag AS betrag_raw,
+    to_char(t.betrag, 'FM€ 999G999G990D00') AS betrag,
+    kv.aname AS konto_von,
+    t.fk_konto_von_sid,
+    kz.aname AS konto_zu,
+    t.fk_konto_zu_sid,
+    s.aname AS schuldner,
+    t.fk_schuldner_sid,
+    t.datum,
+    to_char(date_trunc('month', t.monat)::date, 'FMMonth YY') AS monat
+FROM transaktion t
+INNER JOIN konto kv ON t.fk_konto_von_sid = kv.sid AND kv.fk_recordstate_sid = 0
+INNER JOIN konto kz ON t.fk_konto_zu_sid = kz.sid AND kz.fk_recordstate_sid = 0
+LEFT JOIN schuldner s ON t.fk_schuldner_sid = s.sid AND s.fk_recordstate_sid = 0
+WHERE t.fk_recordstate_sid = 0
+    AND t.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+ORDER BY t.datum;

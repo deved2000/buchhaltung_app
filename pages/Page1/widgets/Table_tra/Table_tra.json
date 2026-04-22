@@ -64,7 +64,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "26rpaaqsz5",
-  "leftColumn": 7,
+  "leftColumn": 6,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 10,
   "minWidth": 450,
@@ -81,10 +81,10 @@
   "positioning": "fixed",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 31,
+  "rightColumn": 30,
   "shouldScrollContents": true,
   "topRow": 142,
   "type": "FORM_WIDGET",
   "widgetId": "006twy1scj",
-  "widgetName": "Form_Transaktion"
+  "widgetName": "Table_tra"
 }

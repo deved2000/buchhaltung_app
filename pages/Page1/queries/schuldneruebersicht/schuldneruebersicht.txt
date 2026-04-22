@@ -1,0 +1,2 @@
+select aname "Name" from schuldner 
+where fk_recordstate_sid = 0
