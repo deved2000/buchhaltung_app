@@ -15,6 +15,9 @@
     },
     {
       "key": "isDisabled"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicPropertyPathList": [
@@ -36,7 +39,7 @@
   "isDefaultClickDisabled": true,
   "isDisabled": "{{ Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== \"\" ? false : true }}",
   "isLoading": false,
-  "isVisible": "",
+  "isVisible": "{{ Object.keys(Table_ein.selectedRow).length > 0 }}",
   "key": "dqgpgivi01",
   "leftColumn": 3,
   "minWidth": 120,
