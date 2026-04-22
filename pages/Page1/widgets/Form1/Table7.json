@@ -32,9 +32,9 @@
     }
   },
   "columnOrder": [
-    "Name"
+    "aname"
   ],
-  "columnUpdatedAt": 1776871904728,
+  "columnUpdatedAt": 1776876183232,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -58,7 +58,7 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.Name.computedValue"
+      "key": "primaryColumns.aname.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -92,19 +92,21 @@
   "parentId": "ezqh6dpqog",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "Name": {
-      "alias": "Name",
+    "aname": {
+      "alias": "aname",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table7.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Name\"])) : Name })()}}",
+      "computedValue": "{{(() => { const tableData = Table7.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"aname\"])) : aname })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "Name",
-      "index": 0,
+      "id": "aname",
+      "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -113,10 +115,11 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Name",
+      "label": "aname",
       "notation": "standard",
-      "originalId": "Name",
+      "originalId": "aname",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},

@@ -1,11 +1,11 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 51,
+  "bottomRow": 50,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-  "buttonVariant": "SECONDARY",
-  "disabledWhenInvalid": false,
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": true,
   "dynamicBindingPathList": [
     {
       "key": "buttonColor"
@@ -14,18 +14,29 @@
       "key": "borderRadius"
     }
   ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "isDefaultClickDisabled": true,
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
   "key": "bzzijbmn73",
-  "leftColumn": 18,
+  "leftColumn": 35,
   "minWidth": 120,
   "mobileBottomRow": 37,
-  "mobileLeftColumn": 30,
-  "mobileRightColumn": 46,
+  "mobileLeftColumn": 46,
+  "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
+  "onClick": "{{\njso_speichern_tra.speichern()}}",
   "originalBottomRow": 43,
   "originalTopRow": 39,
   "parentId": "98froqpgkn",
@@ -34,11 +45,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": true,
   "responsiveBehavior": "hug",
-  "rightColumn": 34,
-  "text": "Reset",
-  "topRow": 47,
+  "rightColumn": 52,
+  "text": "Speichern",
+  "topRow": 46,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "7a5onz4bn0",
-  "widgetName": "reset_einCopy"
+  "widgetId": "vxj80yq3ng",
+  "widgetName": "BtnSave_tra"
 }

@@ -1,2 +1,2 @@
-select aname "Name" from schuldner 
+select aname from schuldner 
 where fk_recordstate_sid = 0

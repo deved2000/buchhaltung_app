@@ -2,9 +2,9 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 13,
+  "bottomRow": 36,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n  Object.keys(Table_tra.selectedRow).length > 0 \n    ? Table_tra.selectedRow.fk_schuldner_sid\n    : \"\"\n))(Select_Schuldner.options, Select_Schuldner.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,12 +14,21 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
+    },
+    {
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -27,21 +36,21 @@
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
-  "isVisible": true,
+  "isVisible": "{{\n  Select_vonKonto.selectedOptionValue == 4 ||\n  Select_zuKonto.selectedOptionValue == 4\n}}",
   "key": "5md8vrl9r0",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "zu Konto",
+  "labelText": "Schuldner",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 27,
+  "leftColumn": 2,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 27,
+  "mobileBottomRow": 20,
   "mobileLeftColumn": 2,
   "mobileRightColumn": 22,
-  "mobileTopRow": 20,
+  "mobileTopRow": 13,
   "needsErrorInfo": false,
   "optionLabel": "label",
   "optionValue": "value",
@@ -55,10 +64,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 51,
   "serverSideFiltering": false,
-  "sourceData": "{{ getKonto.data.map(k => ({ label: k.aname, value: k.sid })) }}",
-  "topRow": 6,
+  "sourceData": "{{ getSchuldner.data.map(s => ({ label: s.aname, value: s.sid })) }}",
+  "topRow": 28,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "kgj5ym90de",
-  "widgetName": "Select_zuKonto"
+  "widgetId": "1q9ma5gncq",
+  "widgetName": "Select_Schuldner"
 }

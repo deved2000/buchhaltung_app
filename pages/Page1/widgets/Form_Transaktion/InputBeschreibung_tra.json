@@ -1,13 +1,11 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
+  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 27,
+  "bottomRow": 43,
   "boxShadow": "none",
-  "closeOnSelection": true,
-  "dateFormat": "DD/MM/YYYY",
-  "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{ new Date() }}",
+  "defaultText": "{{Table_tra.selectedRow.beschreibung}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -16,51 +14,46 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultDate"
+      "key": "defaultText"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "defaultDate"
-    }
-  ],
   "dynamicTriggerPathList": [],
-  "firstDayOfWeek": 0,
+  "iconAlign": "left",
+  "inputType": "TEXT",
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "nzg94ohf52",
-  "label": "Datum",
+  "key": "5um9waqwli",
+  "label": "Beschreibung",
   "labelAlignment": "left",
   "labelPosition": "Top",
+  "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 2,
-  "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
-  "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 44,
-  "mobileLeftColumn": 2,
-  "mobileRightColumn": 22,
-  "mobileTopRow": 37,
+  "mobileBottomRow": 16,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "originalBottomRow": 36,
-  "originalTopRow": 29,
+  "originalBottomRow": 15,
+  "originalTopRow": 8,
   "parentColumnSpace": 7.1171875,
   "parentId": "98froqpgkn",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
+  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 51,
-  "shortcuts": false,
-  "timePrecision": "None",
-  "topRow": 20,
-  "type": "DATE_PICKER_WIDGET2",
+  "showStepArrows": false,
+  "topRow": 36,
+  "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "23dxhpxqx5",
-  "widgetName": "DatePicker_tra"
+  "widgetId": "ebt5vuhd9l",
+  "widgetName": "InputBeschreibung_tra"
 }

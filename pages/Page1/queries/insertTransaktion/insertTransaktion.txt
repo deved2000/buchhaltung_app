@@ -7,10 +7,10 @@ INSERT INTO transaktion (
   beschreibung
 )
 VALUES (
-  {{ Select_vonKonto.selectedOptionValue }},
-  {{ Select_zuKonto.selectedOptionValue }},
-	{{Number(InputBetrag_tra.text.replace(/\./g, '').replace(',', '.'))}}::numeric,
-  {{ DatePicker_tra.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
-  {{ Select_Schuldner.selectedOptionValue }},
-  {{ InputBeschreibung_tra.text }}
+    {{Select_vonKonto.selectedOptionValue}},
+    {{Select_zuKonto.selectedOptionValue}},
+    {{Number(InputBetrag_tra.text.replace(/\./g, '').replace(',', '.'))}}::numeric,
+    {{DatePicker_tra.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
+    {{Select_Schuldner.selectedOptionValue ? Select_Schuldner.selectedOptionValue : null}},
+    {{InputBeschreibung_tra.text ? InputBeschreibung_tra.text : null}}
 );
