@@ -49,6 +49,8 @@
   "mobileTopRow": 35,
   "needsErrorInfo": false,
   "onClick": "{{\n  del_transaktion.run()\n    .then(() => {\n        monatsliste_tra.run();\n        showAlert('Transaktion gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "originalBottomRow": 50,
+  "originalTopRow": 46,
   "parentColumnSpace": 8.7109375,
   "parentId": "98froqpgkn",
   "parentRowSpace": 10,

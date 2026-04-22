@@ -49,6 +49,8 @@
   "mobileTopRow": 35,
   "needsErrorInfo": false,
   "onClick": "{{\n  del_ausgabe.run()\n    .then(() => {\n        monatsliste_aus.run();\n        showAlert('Ausgabe gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "originalBottomRow": 39,
+  "originalTopRow": 35,
   "parentColumnSpace": 8.7109375,
   "parentId": "zrvnrm08rw",
   "parentRowSpace": 10,

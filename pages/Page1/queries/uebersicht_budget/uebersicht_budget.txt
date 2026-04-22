@@ -1,0 +1,42 @@
+WITH budget AS (
+    SELECT COALESCE(
+        (SELECT e.betrag
+         FROM einnahme e
+         WHERE e.fk_quelle_sid = 4 AND e.fk_recordstate_sid = 0
+         ORDER BY e.datum DESC
+         LIMIT 1),
+        1548.65
+    ) AS einkommen,
+
+    (SELECT a.betrag
+     FROM ausgabe a
+     WHERE a.fk_kategorie_sid = 1
+         AND a.fk_recordstate_sid = 0
+         AND a.betrag > 400
+         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+     ORDER BY a.datum DESC
+     LIMIT 1
+    ) AS miete,
+
+    (SELECT COALESCE(SUM(a.betrag), 0)
+     FROM ausgabe a
+     WHERE a.fk_kategorie_sid = 6
+         AND a.fk_recordstate_sid = 0
+         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+    ) AS investment,
+
+    (SELECT COALESCE(SUM(a.betrag), 0)
+     FROM ausgabe a
+     WHERE a.fk_recordstate_sid = 0
+         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+    ) AS ausgaben_gesamt
+)
+SELECT 'Einkommen'  AS "Budget", to_char(einkommen,                                        'FM€ 999G999G990D00') AS "Betrag" FROM budget
+UNION ALL
+SELECT 'Miete'      AS "Budget", to_char(miete,                                            'FM€ 999G999G990D00') AS "Betrag" FROM budget
+UNION ALL
+SELECT 'Investment' AS "Budget", to_char(investment,                                       'FM€ 999G999G990D00') AS "Betrag" FROM budget
+UNION ALL
+SELECT 'Ausgaben'   AS "Budget", to_char(ausgaben_gesamt - miete - investment,             'FM€ 999G999G990D00') AS "Betrag" FROM budget
+UNION ALL
+SELECT 'Sparen'     AS "Budget", to_char(einkommen - ausgaben_gesamt,                      'FM€ 999G999G990D00') AS "Betrag" FROM budget;

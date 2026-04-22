@@ -49,6 +49,8 @@
   "mobileTopRow": 35,
   "needsErrorInfo": false,
   "onClick": "{{\n  del_einnahme.run()\n    .then(() => {\n        monatsliste_ein.run();\n        showAlert('Einnahme gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "originalBottomRow": 39,
+  "originalTopRow": 35,
   "parentColumnSpace": 8.7109375,
   "parentId": "66owns0dma",
   "parentRowSpace": 10,
