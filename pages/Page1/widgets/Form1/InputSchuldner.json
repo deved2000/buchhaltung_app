@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 14,
   "boxShadow": "none",
-  "defaultText": "{{Table_sch.selectedRow.schuldner}}",
+  "defaultText": "{{Table_sch.selectedRow.Schuldner}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
