@@ -1,6 +1,6 @@
 {
   "gitSyncId": "69978066a9cbc329806ad520_d71bf98b-5952-4419-820c-9f59e8c0aad4",
-  "id": "Page1_kategorie_sum",
+  "id": "Page1_uebersicht_kategorie",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "kategorie_sum",
+    "name": "uebersicht_kategorie",
     "pageId": "Page1",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

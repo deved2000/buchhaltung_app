@@ -5,7 +5,7 @@ export default {
                 await update_rs_ausgabe.run();
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
-							  await kategorie_sum.run();
+							  await uebersicht_kategorie.run();
                 await konto_saldo_ende.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');
@@ -17,7 +17,7 @@ export default {
             } else {
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
-							  await kategorie_sum.run();
+							  await uebersicht_kategorie.run();
                 await konto_saldo_ende.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');

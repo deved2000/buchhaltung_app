@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT sid, aname\nFROM quelle\nwhere fk_recordstate_sid = 0\nORDER BY aname;",
+      "body": "SELECT q.sid, q.aname\nFROM quelle q\nLEFT JOIN einnahme e ON e.fk_quelle_sid = q.sid AND e.fk_recordstate_sid = 0\nWHERE q.fk_recordstate_sid = 0\nGROUP BY q.sid, q.aname\nORDER BY COUNT(e.sid) DESC, q.aname;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

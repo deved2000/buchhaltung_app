@@ -1,4 +1,6 @@
-SELECT sid, aname
-FROM konto
-where fk_recordstate_sid = 0
-ORDER BY aname;
+SELECT k.sid, k.aname
+FROM konto k
+LEFT JOIN ausgabe a ON a.fk_konto_sid = k.sid AND a.fk_recordstate_sid = 0
+WHERE k.fk_recordstate_sid = 0
+GROUP BY k.sid, k.aname
+ORDER BY COUNT(a.sid) DESC, k.aname;
