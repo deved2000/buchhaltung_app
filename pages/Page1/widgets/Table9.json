@@ -32,10 +32,10 @@
     }
   },
   "columnOrder": [
-    "bezeichnung",
-    "betrag"
+    "Bezeichnung",
+    "Betrag"
   ],
-  "columnUpdatedAt": 1776966300742,
+  "columnUpdatedAt": 1776966825330,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -59,10 +59,10 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.bezeichnung.computedValue"
+      "key": "primaryColumns.Bezeichnung.computedValue"
     },
     {
-      "key": "primaryColumns.betrag.computedValue"
+      "key": "primaryColumns.Betrag.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -96,18 +96,18 @@
   "parentId": "0",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "betrag": {
-      "alias": "betrag",
+    "Betrag": {
+      "alias": "Betrag",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table9.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"betrag\"])) : betrag })()}}",
+      "computedValue": "{{(() => { const tableData = Table9.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Betrag\"])) : Betrag })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
-      "horizontalAlignment": "RIGHT",
-      "id": "betrag",
+      "horizontalAlignment": "LEFT",
+      "id": "Betrag",
       "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -117,9 +117,9 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "betrag",
+      "label": "Betrag",
       "notation": "standard",
-      "originalId": "betrag",
+      "originalId": "Betrag",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
@@ -127,19 +127,19 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "bezeichnung": {
-      "alias": "bezeichnung",
+    "Bezeichnung": {
+      "alias": "Bezeichnung",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table9.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"bezeichnung\"])) : bezeichnung })()}}",
+      "computedValue": "{{(() => { const tableData = Table9.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Bezeichnung\"])) : Bezeichnung })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
-      "id": "bezeichnung",
-      "index": 0,
+      "id": "Bezeichnung",
+      "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -148,9 +148,9 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "bezeichnung",
+      "label": "Bezeichnung",
       "notation": "standard",
-      "originalId": "bezeichnung",
+      "originalId": "Bezeichnung",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,

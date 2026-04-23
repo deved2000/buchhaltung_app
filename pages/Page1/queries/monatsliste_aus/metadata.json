@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "select\na.sid,\na.artikel,\na.betrag AS betrag_raw,\nto_char(a.betrag, 'FM€ 999G999G999D00') AS Betrag,\nk.aname kategorie,\n a.fk_kategorie_sid,\na.datum,\nko.aname konto,\n a.fk_konto_sid,\nto_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat\nfrom ausgabe a\ninner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0\ninner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\norder by datum;",
+      "body": "select\na.sid,\na.artikel \"Artikel\",\na.betrag AS betrag_raw,\nto_char(a.betrag, 'FM€ 999G999G999D00') AS \"Betrag\",\nk.aname \"Kategorie\",\n a.fk_kategorie_sid,\na.datum \"Datum\",\nko.aname \"Konto\",\n a.fk_konto_sid,\nto_char(date_trunc('month', a.monat)::date, 'FMMonth YY') monat\nfrom ausgabe a\ninner join kategorie k on a.fk_kategorie_sid = k.sid and k.fk_recordstate_sid = 0\ninner join konto ko on a.fk_konto_sid = ko.sid and ko.fk_recordstate_sid = 0\nwhere a.fk_recordstate_sid = 0 and a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\norder by datum;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

@@ -1,12 +1,12 @@
 select
 e.sid,
-q.aname Quelle,
+q.aname "Quelle",
 e.fk_quelle_sid,
 e.betrag AS betrag_raw,
-to_char(e.betrag, 'FM€ 999G999G999D00') Betrag,
-e.beschreibung Beschreibung, 
-e.datum Datum,
-ko.aname Konto,
+to_char(e.betrag, 'FM€ 999G999G999D00') "Betrag",
+e.beschreibung "Beschreibung", 
+e.datum "Datum",
+ko.aname "Konto",
 e.fk_konto_sid,
 to_char(date_trunc('month', e.monat)::date, 'FMMonth YY') monat
 from einnahme e

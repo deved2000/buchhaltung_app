@@ -1,13 +1,13 @@
 SELECT
     t.sid,
-    t.beschreibung,
+    t.beschreibung "Beschreibung",
     t.betrag AS betrag_raw,
-    to_char(t.betrag, 'FM€ 999G999G990D00') AS betrag,
-    kv.aname AS konto_von,
+    to_char(t.betrag, 'FM€ 999G999G990D00') AS "Betrag",
+    kv.aname AS "Konto von",
     t.fk_konto_von_sid,
-    kz.aname AS konto_zu,
+    kz.aname AS "Konto zu",
     t.fk_konto_zu_sid,
-    s.aname AS schuldner,
+    s.aname AS "Schuldner",
     t.fk_schuldner_sid,
     t.datum,
     to_char(date_trunc('month', t.monat)::date, 'FMMonth YY') AS monat

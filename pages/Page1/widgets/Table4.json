@@ -32,10 +32,10 @@
     }
   },
   "columnOrder": [
-    "kategorie",
-    "betrag"
+    "Kategorie",
+    "Betrag"
   ],
-  "columnUpdatedAt": 1776963453365,
+  "columnUpdatedAt": 1776966844295,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -59,10 +59,10 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.kategorie.computedValue"
+      "key": "primaryColumns.Kategorie.computedValue"
     },
     {
-      "key": "primaryColumns.betrag.computedValue"
+      "key": "primaryColumns.Betrag.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -98,18 +98,20 @@
   "parentId": "0",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "betrag": {
-      "alias": "betrag",
+    "Betrag": {
+      "alias": "Betrag",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table4.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"betrag\"])) : betrag })()}}",
+      "computedValue": "{{(() => { const tableData = Table4.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Betrag\"])) : Betrag })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "betrag",
+      "id": "Betrag",
       "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -119,29 +121,32 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "betrag",
+      "label": "Betrag",
       "notation": "standard",
-      "originalId": "betrag",
+      "originalId": "Betrag",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "kategorie": {
-      "alias": "kategorie",
+    "Kategorie": {
+      "alias": "Kategorie",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table4.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"kategorie\"])) : kategorie })()}}",
+      "computedValue": "{{(() => { const tableData = Table4.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Kategorie\"])) : Kategorie })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "kategorie",
-      "index": 0,
+      "id": "Kategorie",
+      "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -150,10 +155,11 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "kategorie",
+      "label": "Kategorie",
       "notation": "standard",
-      "originalId": "kategorie",
+      "originalId": "Kategorie",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},

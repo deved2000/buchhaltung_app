@@ -8,8 +8,8 @@ summen AS (
     FROM v_bewegungen vb, monat_filter
     WHERE vb.monat = monat_filter.monat
 )
-SELECT 'Ausgaben'  AS Bezeichnung, to_char(ausgaben,             'FM€ 999G999G990D00') AS Betrag FROM summen
+SELECT 'Ausgaben'  AS "Bezeichnung", to_char(ausgaben,             'FM€ 999G999G990D00') AS "Betrag" FROM summen
 UNION ALL
-SELECT 'Einnahmen' AS Bezeichnung, to_char(einnahmen,            'FM€ 999G999G990D00') AS Betrag FROM summen
+SELECT 'Einnahmen' AS "Bezeichnung", to_char(einnahmen,            'FM€ 999G999G990D00') AS "Betrag" FROM summen
 UNION ALL
-SELECT 'Differenz' AS Bezeichnung, to_char(einnahmen - ausgaben, 'FM€ 999G999G990D00') AS Betrag FROM summen;
+SELECT 'Differenz' AS "Bezeichnung", to_char(einnahmen - ausgaben, 'FM€ 999G999G990D00') AS "Betrag" FROM summen;

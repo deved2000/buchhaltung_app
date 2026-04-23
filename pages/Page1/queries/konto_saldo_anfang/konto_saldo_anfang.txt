@@ -1,7 +1,7 @@
 SELECT 
-    konto_name,
+    konto_name as "Konto",
     to_char(saldo_anfang, 'FM€ 999G999G990D00'::text) AS "Anfangssaldo",
-		to_char(saldo_ende, 'FM€ 999G999G990D00'::text) as "aktueller Saldo"
+		to_char(saldo_ende, 'FM€ 999G999G990D00'::text) as "akt. Saldo"
 FROM v_monatssalden
 WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-ORDER BY konto_name;
+ORDER BY konto_sid;

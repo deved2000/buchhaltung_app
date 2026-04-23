@@ -1,6 +1,6 @@
 SELECT 
-    ka.aname AS Kategorie,
-    to_char(sum(a.betrag), 'FM€ 999G999G990D00') AS Betrag
+    ka.aname AS "Kategorie",
+    to_char(sum(a.betrag), 'FM€ 999G999G990D00') AS "Betrag"
 FROM ausgabe a
 INNER JOIN kategorie ka ON a.fk_kategorie_sid = ka.sid AND ka.fk_recordstate_sid = 0
 WHERE a.fk_recordstate_sid = 0 
