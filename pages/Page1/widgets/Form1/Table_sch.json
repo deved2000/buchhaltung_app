@@ -32,10 +32,10 @@
     }
   },
   "columnOrder": [
-    "schuldner",
-    "schuldenstand"
+    "Schuldner",
+    "Schuldenstand"
   ],
-  "columnUpdatedAt": 1776970694220,
+  "columnUpdatedAt": 1776970972467,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -59,10 +59,10 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.schuldner.computedValue"
+      "key": "primaryColumns.Schuldner.computedValue"
     },
     {
-      "key": "primaryColumns.schuldenstand.computedValue"
+      "key": "primaryColumns.Schuldenstand.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -98,18 +98,18 @@
   "parentId": "ezqh6dpqog",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "schuldenstand": {
-      "alias": "schuldenstand",
+    "Schuldenstand": {
+      "alias": "Schuldenstand",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"schuldenstand\"])) : schuldenstand })()}}",
+      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Schuldenstand\"])) : Schuldenstand })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
-      "id": "schuldenstand",
+      "id": "Schuldenstand",
       "index": 1,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -119,9 +119,9 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "schuldenstand",
+      "label": "Schuldenstand",
       "notation": "standard",
-      "originalId": "schuldenstand",
+      "originalId": "Schuldenstand",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
@@ -129,18 +129,18 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "schuldner": {
-      "alias": "schuldner",
+    "Schuldner": {
+      "alias": "Schuldner",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"schuldner\"])) : schuldner })()}}",
+      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Schuldner\"])) : Schuldner })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
-      "id": "schuldner",
+      "id": "Schuldner",
       "index": 0,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -150,9 +150,9 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "schuldner",
+      "label": "Schuldner",
       "notation": "standard",
-      "originalId": "schuldner",
+      "originalId": "Schuldner",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
