@@ -1,2 +1,8 @@
-UPDATE schuldner SET fk_recordstate_sid = 2
-WHERE sid = {{Table_sch.selectedRow.sid}};
+UPDATE schuldner 
+SET validto = NOW()
+WHERE sid = {{Table_sch.selectedRow.sid}}
+AND NOT EXISTS (
+    SELECT 1 FROM transaktion t
+    WHERE t.fk_schuldner_sid = {{Table_sch.selectedRow.sid}}
+    AND t.fk_recordstate_sid = 0
+);

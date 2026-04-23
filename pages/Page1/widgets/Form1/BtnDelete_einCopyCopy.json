@@ -48,7 +48,7 @@
   "mobileRightColumn": 18,
   "mobileTopRow": 35,
   "needsErrorInfo": false,
-  "onClick": "{{\n  del_schuldner.run()\n    .then(() => {\n        getSchuldner.run();\n        showAlert('Schuldner gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "onClick": "jso",
   "originalBottomRow": 50,
   "originalTopRow": 46,
   "parentColumnSpace": 8.7109375,

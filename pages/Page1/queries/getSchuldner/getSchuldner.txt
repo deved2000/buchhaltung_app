@@ -1,4 +1,4 @@
 SELECT sid, aname
 FROM schuldner
-where fk_recordstate_sid = 0
+where fk_recordstate_sid = 0 and (validto is null or validto > NOW())
 ORDER BY aname;

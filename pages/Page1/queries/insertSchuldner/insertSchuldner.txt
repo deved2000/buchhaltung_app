@@ -1,4 +1,5 @@
 INSERT INTO schuldner (aname)
-VALUES (
-  {{ InputSchuldner.text }}
-);
+VALUES ({{InputSchuldner.text}})
+ON CONFLICT (aname) DO UPDATE
+SET validto = NULL,
+    fk_recordstate_sid = 0;

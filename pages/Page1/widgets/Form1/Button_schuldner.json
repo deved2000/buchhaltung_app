@@ -39,7 +39,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "export default {\n    speichern: async () => {\n        try {\n            if (Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\") {\n                await update_rs_schuldner.run();\n                await insertSchuldner.run();\n                await getSchuldner.run();\n                resetWidget('InputSchuldner');\n                showAlert('Schuldner aktualisiert ✅', 'success');\n                removeValue(\"\");\n            } else {\n                await insertSchuldner.run();\n                await getSchuldner.run();\n                resetWidget('InputSchuldner');\n                showAlert('Schuldner gespeichert ✅', 'success');\n                removeValue(\"\");\n            }\n        } catch (e) {\n            showAlert('Fehler beim Speichern ❌', 'error');\n        }\n    }\n}",
+  "onClick": "{{jso_speichern_sch.speichern()}}",
   "parentId": "ezqh6dpqog",
   "placement": "CENTER",
   "recaptchaType": "V3",
