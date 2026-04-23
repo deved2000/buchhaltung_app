@@ -34,9 +34,10 @@
   "columnOrder": [
     "Konto",
     "Anfangssaldo",
-    "akt__Saldo"
+    "akt__Saldo",
+    "konto_sid"
   ],
-  "columnUpdatedAt": 1776967377024,
+  "columnUpdatedAt": 1776972074172,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -57,19 +58,26 @@
       "key": "boxShadow"
     },
     {
+      "key": "primaryColumns.Konto.computedValue"
+    },
+    {
       "key": "tableData"
     },
     {
       "key": "primaryColumns.Anfangssaldo.computedValue"
     },
     {
-      "key": "primaryColumns.Konto.computedValue"
+      "key": "primaryColumns.akt__Saldo.computedValue"
     },
     {
-      "key": "primaryColumns.akt__Saldo.computedValue"
+      "key": "primaryColumns.konto_sid.computedValue"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "tableData"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "enableClientSideSearch": true,
   "endOfData": false,
@@ -197,13 +205,47 @@
       "validation": {},
       "verticalAlignment": "CENTER",
       "width": 150
+    },
+    "konto_sid": {
+      "alias": "konto_sid",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table5.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"konto_sid\"])) : konto_sid })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "konto_sid",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "konto_sid",
+      "notation": "standard",
+      "originalId": "konto_sid",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
     }
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 30,
   "searchKey": "",
-  "tableData": "{{konto_saldo_anfang.data}}",
+  "tableData": "{{uebersicht_konto.data}}",
   "textSize": "0.875rem",
   "topRow": 43,
   "totalRecordsCount": 0,

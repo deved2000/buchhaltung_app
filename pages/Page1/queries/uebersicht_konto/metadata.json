@@ -1,11 +1,11 @@
 {
   "gitSyncId": "69978066a9cbc329806ad520_83a3acab-84fe-42f3-b770-5af007d6984e",
-  "id": "Page1_konto_saldo_anfang",
+  "id": "Page1_uebersicht_konto",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    konto_name as \"Konto\",\n    to_char(saldo_anfang, 'FM€ 999G999G990D00'::text) AS \"Anfangssaldo\",\n\t\tto_char(saldo_ende, 'FM€ 999G999G990D00'::text) as \"akt. Saldo\"\nFROM v_monatssalden\nWHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\nORDER BY konto_sid;",
+      "body": "SELECT\n    konto_name AS \"Konto\",\n\tto_char(saldo_anfang, 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n\tto_char(saldo_ende,   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n\tkonto_sid\nFROM v_monatssalden\nWHERE monat = '2026-04-01'\n\nUNION ALL\n\nSELECT\n    'Gesamt' AS \"Konto\",\n    to_char(SUM(saldo_anfang), 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n    to_char(SUM(saldo_ende),   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n    999999 AS konto_sid\nFROM v_monatssalden\nWHERE monat = '2026-04-01'\n\norder by konto_sid\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,12 +22,8 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
-    "name": "konto_saldo_anfang",
+    "dynamicBindingPathList": [],
+    "name": "uebersicht_konto",
     "pageId": "Page1",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
