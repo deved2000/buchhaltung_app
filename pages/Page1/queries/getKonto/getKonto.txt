@@ -1,3 +1,4 @@
 SELECT sid, aname
 FROM konto
+where fk_recordstate_sid = 0
 ORDER BY aname;

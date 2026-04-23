@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 5,
+  "bottomRow": 7,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,9 +11,13 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1.25rem",
   "fontStyle": "BOLD",
@@ -37,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 25.5,
   "shouldTruncate": false,
-  "text": "Form",
+  "text": "{{ Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\" ? \"Schuldner ändern\" : \"Schuldner hinzufügen\" }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

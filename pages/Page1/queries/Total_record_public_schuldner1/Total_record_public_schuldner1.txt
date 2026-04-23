@@ -1,1 +1,1 @@
-SELECT COUNT(*) from public.schuldner where beschreibung ilike '%{{Table7.searchText}}%';
+SELECT COUNT(*) from public.schuldner where beschreibung ilike '%{{Table_sch.searchText}}%';

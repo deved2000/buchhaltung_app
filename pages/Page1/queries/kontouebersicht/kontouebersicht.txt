@@ -13,5 +13,7 @@ FROM konto k
 LEFT JOIN v_bewegungen vb
     ON vb.konto_zu_sid = k.sid
     OR vb.konto_von_sid = k.sid
+
+where k.fk_recordstate_sid = 0
 GROUP BY k.sid, k.aname
 ORDER BY k.aname;

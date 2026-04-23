@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 42,
+  "bottomRow": 44,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -32,14 +32,15 @@
     }
   },
   "columnOrder": [
-    "aname"
+    "aname",
+    "sid"
   ],
-  "columnUpdatedAt": 1776876183232,
+  "columnUpdatedAt": 1776960190963,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
-  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndex": "-1",
   "defaultSelectedRowIndices": [
     0
   ],
@@ -59,6 +60,9 @@
     },
     {
       "key": "primaryColumns.aname.computedValue"
+    },
+    {
+      "key": "primaryColumns.sid.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -100,7 +104,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table7.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"aname\"])) : aname })()}}",
+      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"aname\"])) : aname })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -127,19 +131,50 @@
       "validation": {},
       "verticalAlignment": "CENTER",
       "width": 150
+    },
+    "sid": {
+      "alias": "sid",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"sid\"])) : sid })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "sid",
+      "index": 0,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "sid",
+      "notation": "standard",
+      "originalId": "sid",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
     }
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "searchKey": "",
-  "tableData": "{{schuldneruebersicht.data}}",
+  "tableData": "{{getSchuldner.data}}",
   "textSize": "0.875rem",
-  "topRow": 14,
+  "topRow": 16,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "n45cwbwhun",
-  "widgetName": "Table7"
+  "widgetName": "Table_sch"
 }

@@ -1,3 +1,4 @@
 SELECT sid, aname
 FROM schuldner
+where fk_recordstate_sid = 0
 ORDER BY aname;

@@ -1,2 +1,0 @@
-select aname from schuldner 
-where fk_recordstate_sid = 0

@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_225f7faa-5e4d-4ef8-adcf-121f08a80bd0",
-  "id": "Page1_schuldneruebersicht",
+  "gitSyncId": "69978066a9cbc329806ad520_52020ae9-775d-476e-97ff-049031fb0417",
+  "id": "Page1_del_schuldner",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "select aname from schuldner \nwhere fk_recordstate_sid = 0",
+      "body": "UPDATE schuldner SET fk_recordstate_sid = 2\nWHERE sid = {{Table_sch.selectedRow.sid}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "schuldneruebersicht",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "del_schuldner",
     "pageId": "Page1",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

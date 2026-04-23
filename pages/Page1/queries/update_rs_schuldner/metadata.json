@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_8d38e4dc-27e0-4a07-9748-28d406bc3e51",
-  "id": "Page1_Total_record_public_schuldner1",
+  "gitSyncId": "69978066a9cbc329806ad520_8ff04e26-8125-4bb3-bbf1-349b263068c6",
+  "id": "Page1_update_rs_schuldner",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT COUNT(*) from public.schuldner where beschreibung ilike '%{{Table_sch.searchText}}%';",
+      "body": "UPDATE schuldner SET fk_recordstate_sid = 2\nWHERE sid = {{Table_sch.selectedRow.sid}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "Total_record_public_schuldner1",
+    "name": "update_rs_schuldner",
     "pageId": "Page1",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

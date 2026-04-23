@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 13,
+  "bottomRow": 14,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -12,6 +12,14 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -31,7 +39,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{insertSchuldner.run().then(() => {\n  showAlert('Schuldner hinzugefügt ✅', '');\n  removeValue(\"\");\n});}}",
+  "onClick": "export default {\n    speichern: async () => {\n        try {\n            if (Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\") {\n                await update_rs_schuldner.run();\n                await insertSchuldner.run();\n                await getSchuldner.run();\n                resetWidget('InputSchuldner');\n                showAlert('Schuldner aktualisiert ✅', 'success');\n                removeValue(\"\");\n            } else {\n                await insertSchuldner.run();\n                await getSchuldner.run();\n                resetWidget('InputSchuldner');\n                showAlert('Schuldner gespeichert ✅', 'success');\n                removeValue(\"\");\n            }\n        } catch (e) {\n            showAlert('Fehler beim Speichern ❌', 'error');\n        }\n    }\n}",
   "parentId": "ezqh6dpqog",
   "placement": "CENTER",
   "recaptchaType": "V3",
@@ -39,8 +47,8 @@
   "resetFormOnClick": true,
   "responsiveBehavior": "hug",
   "rightColumn": 63,
-  "text": "Speichern",
-  "topRow": 9,
+  "text": "{{ Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\" ? \"Ändern\" : \"Speichern\" }}",
+  "topRow": 10,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "1g4lwygldf",
