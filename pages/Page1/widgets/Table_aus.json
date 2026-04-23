@@ -44,7 +44,10 @@
     "Konto"
   ],
   "columnUpdatedAt": 1776966887563,
-  "columnWidthMap": {},
+  "columnWidthMap": {
+    "Betrag": 123,
+    "Kategorie": 128
+  },
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
@@ -211,6 +214,7 @@
       "horizontalAlignment": "LEFT",
       "id": "Datum",
       "index": 6,
+      "inputFormat": "YYYY-MM-DD",
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -222,6 +226,7 @@
       "label": "Datum",
       "notation": "standard",
       "originalId": "Datum",
+      "outputFormat": "YYYY-MM-DD",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
@@ -456,7 +461,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 37,
+  "rightColumn": 40,
   "searchKey": "",
   "tableData": "{{monatsliste_aus.data}}",
   "textSize": "0.875rem",

@@ -2,7 +2,7 @@ select
 a.sid,
 a.artikel "Artikel",
 a.betrag AS betrag_raw,
-to_char(a.betrag, 'FM€ 999G999G999D00') AS "Betrag",
+to_char(a.betrag, 'FM€ 999G999G990D00') AS "Betrag",
 k.aname "Kategorie",
  a.fk_kategorie_sid,
 a.datum "Datum",
