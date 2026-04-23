@@ -8,7 +8,7 @@
   "boxShadow": "none",
   "decimals": 2,
   "defaultCurrencyCode": "EUR",
-  "defaultText": "{{ Table_aus.selectedRow.betrag_raw }}",
+  "defaultText": "{{ Table_aus.selectedRow?.betrag_raw }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

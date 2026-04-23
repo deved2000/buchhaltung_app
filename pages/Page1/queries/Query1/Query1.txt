@@ -1,0 +1,14 @@
+SELECT 
+    s.aname AS schuldner,
+    to_char(
+        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_zu_sid = 4), 0) -
+        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_von_sid = 4), 0),
+        'FM€ 999G999G990D00'
+    ) AS schuldenstand
+FROM schuldner s
+INNER JOIN transaktion t ON t.fk_schuldner_sid = s.sid AND t.fk_recordstate_sid = 0
+INNER JOIN v_bewegungen vb ON vb.source_sid = t.sid AND vb.source_typ = 'transaktion'
+WHERE s.fk_recordstate_sid = 0
+    AND vb.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+GROUP BY s.sid, s.aname
+ORDER BY s.aname;
