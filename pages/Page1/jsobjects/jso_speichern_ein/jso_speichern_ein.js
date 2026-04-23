@@ -5,14 +5,12 @@ export default {
                 await update_rs_einnahme.run();
                 await insertEinnahme.run();
                 await monatsliste_ein.run();
-                await konto_saldo_ende.run();
                 resetWidget('Table_ein');
                 showAlert('Einnahme aktualisiert ✅', 'success');
                 removeValue("");
             } else {
                 await insertEinnahme.run();
                 await monatsliste_ein.run();
-                await konto_saldo_ende.run();
                 resetWidget('Table_ein');
                 showAlert('Einnahme gespeichert ✅', 'success');
                 removeValue("");
