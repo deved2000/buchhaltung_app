@@ -1,0 +1,15 @@
+WITH monat_filter AS (
+    SELECT date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date AS monat
+),
+summen AS (
+    SELECT
+        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.source_typ = 'ausgabe'), 0) AS ausgaben,
+        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.source_typ = 'einnahme'), 0) AS einnahmen
+    FROM v_bewegungen vb, monat_filter
+    WHERE vb.monat = monat_filter.monat
+)
+SELECT 'Ausgaben'  AS Bezeichnung, to_char(ausgaben,             'FM€ 999G999G990D00') AS Betrag FROM summen
+UNION ALL
+SELECT 'Einnahmen' AS Bezeichnung, to_char(einnahmen,            'FM€ 999G999G990D00') AS Betrag FROM summen
+UNION ALL
+SELECT 'Differenz' AS Bezeichnung, to_char(einnahmen - ausgaben, 'FM€ 999G999G990D00') AS Betrag FROM summen;

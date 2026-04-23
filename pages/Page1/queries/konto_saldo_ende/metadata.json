@@ -29,7 +29,7 @@
     ],
     "name": "konto_saldo_ende",
     "pageId": "Page1",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
