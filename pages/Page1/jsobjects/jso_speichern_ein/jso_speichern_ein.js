@@ -4,12 +4,14 @@ export default {
             if (Table_ein.selectedRow.sid != null && Table_ein.selectedRow.sid !== "") {
                 await update_rs_einnahme.run();
                 await insertEinnahme.run();
+							  await uebersicht_konto.run();
                 await monatsliste_ein.run();
                 resetWidget('Table_ein');
                 showAlert('Einnahme aktualisiert ✅', 'success');
                 removeValue("");
             } else {
                 await insertEinnahme.run();
+							  await uebersicht_konto.run();
                 await monatsliste_ein.run();
                 resetWidget('Table_ein');
                 showAlert('Einnahme gespeichert ✅', 'success');

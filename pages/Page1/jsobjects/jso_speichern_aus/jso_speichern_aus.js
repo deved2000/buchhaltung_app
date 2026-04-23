@@ -6,6 +6,7 @@ export default {
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
 							  await uebersicht_kategorie.run();
+							  await uebersicht_konto.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');
                 resetWidget('SelectKategorie');
@@ -17,6 +18,7 @@ export default {
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
 							  await uebersicht_kategorie.run();
+							  await uebersicht_konto.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');
                 resetWidget('SelectKategorie');
