@@ -1,10 +1,10 @@
 SELECT 
-    s.aname AS schuldner,
+    s.aname AS "Schuldner",
     to_char(
         COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_zu_sid = 4), 0) -
         COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_von_sid = 4), 0),
         'FM€ 999G999G990D00'
-    ) AS schuldenstand
+    ) AS "Schuldenstand"
 FROM schuldner s
 INNER JOIN transaktion t ON t.fk_schuldner_sid = s.sid AND t.fk_recordstate_sid = 0
 INNER JOIN v_bewegungen vb ON vb.source_sid = t.sid AND vb.source_typ = 'transaktion'
