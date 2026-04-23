@@ -32,11 +32,11 @@
     }
   },
   "columnOrder": [
-    "Anfangssaldo",
     "Konto",
+    "Anfangssaldo",
     "akt__Saldo"
   ],
-  "columnUpdatedAt": 1776967189541,
+  "columnUpdatedAt": 1776967377024,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
