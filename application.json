@@ -9,8 +9,16 @@
   "evaluationVersion": 2,
   "pages": [
     {
-      "id": "Page1",
+      "id": "Home",
       "isDefault": true
+    },
+    {
+      "id": "Analytics",
+      "isDefault": false
+    },
+    {
+      "id": "Schuldner",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

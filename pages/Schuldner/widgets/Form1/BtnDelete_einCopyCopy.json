@@ -1,0 +1,69 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 9,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    },
+    {
+      "key": "isVisible"
+    },
+    {
+      "key": "isDisabled"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": "{{ Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\" ? false : true }}",
+  "isLoading": false,
+  "isVisible": "{{ Object.keys(Table_sch.selectedRow).length > 0 }}",
+  "key": "dqgpgivi01",
+  "leftColumn": 47,
+  "minWidth": 120,
+  "mobileBottomRow": 39,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 18,
+  "mobileTopRow": 35,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  del_schuldner.run()\n    .then(() => {\n        getSchuldner.run();\n        showAlert('Schuldner gelöscht 🗑️', 'info');\n    })\n    .catch(() => showAlert('Fehler beim Löschen ❌', 'error'))\n}}",
+  "originalBottomRow": 50,
+  "originalTopRow": 46,
+  "parentColumnSpace": 8.7109375,
+  "parentId": "9971y53tbr",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Löschen",
+  "topRow": 5,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "a6xk8lrr98",
+  "widgetName": "BtnDelete_einCopyCopy"
+}
