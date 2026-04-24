@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 5,
+  "bottomRow": 14,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -24,7 +24,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "vo37vbmxll",
-  "leftColumn": 1.5,
+  "leftColumn": 3,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -36,18 +36,18 @@
   "originalBottomRow": 7,
   "originalTopRow": 1,
   "overflow": "NONE",
-  "parentId": "ezqh6dpqog",
+  "parentId": "0",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 25.5,
+  "rightColumn": 27,
   "shouldTruncate": false,
   "text": "{{ Table_sch.selectedRow?.sid != null && Table_sch.selectedRow?.sid !== \"\" ? \"Schuldner ändern\" : \"Schuldner hinzufügen\" }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 1,
+  "topRow": 10,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "s3imjrxv4b",
+  "widgetId": "p6uyhxxqpf",
   "widgetName": "Text4"
 }

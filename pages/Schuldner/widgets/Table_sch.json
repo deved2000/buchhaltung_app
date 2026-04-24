@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 43,
+  "bottomRow": 86,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -33,9 +33,10 @@
   },
   "columnOrder": [
     "Schuldner",
-    "Schuldenstand"
+    "Schuldenstand",
+    "sid"
   ],
-  "columnUpdatedAt": 1776970972467,
+  "columnUpdatedAt": 1777016102783,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -63,6 +64,9 @@
     },
     {
       "key": "primaryColumns.Schuldenstand.computedValue"
+    },
+    {
+      "key": "primaryColumns.sid.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -85,17 +89,17 @@
   "isVisibleSearch": true,
   "key": "qvy559yk7h",
   "label": "Data",
-  "leftColumn": 2,
+  "leftColumn": 3,
   "minWidth": 450,
   "mobileBottomRow": 42,
   "mobileLeftColumn": 2,
   "mobileRightColumn": 36,
   "mobileTopRow": 14,
   "needsErrorInfo": false,
-  "originalBottomRow": 44,
-  "originalTopRow": 16,
+  "originalBottomRow": 43,
+  "originalTopRow": 15,
   "parentColumnSpace": 9.0869140625,
-  "parentId": "9971y53tbr",
+  "parentId": "0",
   "parentRowSpace": 10,
   "primaryColumns": {
     "Schuldenstand": {
@@ -159,19 +163,53 @@
       "validation": {},
       "verticalAlignment": "CENTER",
       "width": 150
+    },
+    "sid": {
+      "alias": "sid",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table_sch.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"sid\"])) : sid })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "sid",
+      "index": 2,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "sid",
+      "notation": "standard",
+      "originalId": "sid",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
     }
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "searchKey": "",
   "tableData": "{{uerbsersicht_schuldner.data}}",
   "textSize": "0.875rem",
-  "topRow": 15,
+  "topRow": 26,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "l0e8nsxxu8",
+  "widgetId": "1fbk2qcb9u",
   "widgetName": "Table_sch"
 }
