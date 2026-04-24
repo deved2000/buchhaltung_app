@@ -1,0 +1,75 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 36,
+  "bottomRowBeforeCollapse": 36,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n  Object.keys(Table_tra.selectedRow).length > 0 \n    ? Table_tra.selectedRow.fk_schuldner_sid\n    : \"\"\n))(Select_Schuldner.options, Select_Schuldner.serverSideFiltering) }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
+    },
+    {
+      "key": "defaultOptionValue"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": "{{\n  Select_vonKonto.selectedOptionValue == 4 ||\n  Select_zuKonto.selectedOptionValue == 4\n}}",
+  "key": "5md8vrl9r0",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelText": "Schuldner",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 2,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 20,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 22,
+  "mobileTopRow": 13,
+  "needsErrorInfo": false,
+  "optionLabel": "label",
+  "optionValue": "value",
+  "originalBottomRow": 36,
+  "originalTopRow": 28,
+  "parentColumnSpace": 7.140625,
+  "parentId": "7wxdkt1i1l",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 51,
+  "serverSideFiltering": false,
+  "sourceData": "{{ getSchuldner.data.map(s => ({ label: s.aname, value: s.sid })) }}",
+  "topRow": 28,
+  "topRowBeforeCollapse": 28,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "z2yuls4exx",
+  "widgetName": "Select_Schuldner"
+}
