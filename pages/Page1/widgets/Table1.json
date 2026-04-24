@@ -40,7 +40,7 @@
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
-  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndex": "-1",
   "defaultSelectedRowIndices": [
     0
   ],
