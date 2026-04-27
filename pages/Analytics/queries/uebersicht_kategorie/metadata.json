@@ -1,6 +1,6 @@
 {
   "gitSyncId": "69978066a9cbc329806ad520_d71bf98b-5952-4419-820c-9f59e8c0aad4",
-  "id": "Home_uebersicht_kategorie",
+  "id": "Analytics_uebersicht_kategorie",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "uebersicht_kategorie",
-    "pageId": "Home",
+    "pageId": "Analytics",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
