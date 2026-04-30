@@ -15,5 +15,4 @@ SELECT
     999999 AS konto_sid
 FROM v_monatssalden
 WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-
 order by konto_sid
