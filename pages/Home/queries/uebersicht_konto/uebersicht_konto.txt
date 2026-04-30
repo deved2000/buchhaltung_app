@@ -4,7 +4,7 @@ SELECT
 	to_char(saldo_ende,   'FM€ 999G999G990D00') AS "akt. Saldo",
 	konto_sid
 FROM v_monatssalden
-WHERE monat = '2026-04-01'
+WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
 
 UNION ALL
 
@@ -14,6 +14,6 @@ SELECT
     to_char(SUM(saldo_ende),   'FM€ 999G999G990D00') AS "akt. Saldo",
     999999 AS konto_sid
 FROM v_monatssalden
-WHERE monat = '2026-04-01'
+WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
 
 order by konto_sid
