@@ -1,15 +1,8 @@
-INSERT INTO transaktion (
-  fk_konto_von_sid,
-  fk_konto_zu_sid,
-  betrag,
-  datum,
-  fk_schuldner_sid,
-  beschreibung
-)
+INSERT INTO transaktion (fk_konto_von_sid, fk_konto_zu_sid, betrag, datum, fk_schuldner_sid, beschreibung)
 VALUES (
     {{Select_vonKonto.selectedOptionValue}},
     {{Select_zuKonto.selectedOptionValue}},
-    {{Number(InputBetrag_tra.text.replace(/\./g, '').replace(',', '.'))}}::numeric,
+    {{Number((InputBetrag_tra.text ?? "0").replace(/\./g, '').replace(',', '.'))}}::numeric,
     {{DatePicker_tra.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
     {{Select_Schuldner.selectedOptionValue ? Select_Schuldner.selectedOptionValue : null}},
     {{InputBeschreibung_tra.text ? InputBeschreibung_tra.text : null}}

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO ausgabe (artikel, betrag, fk_kategorie_sid, datum, fk_konto_sid)\nVALUES (\n  {{ InputArtikel_aus.text }},\n\t{{Number(InputBetrag_aus.text.replace(/\\./g, '').replace(',', '.'))}}::numeric,\n  {{ SelectKategorie.selectedOptionValue }},\n\t{{DatePicker_aus.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',\n  {{ SelectKonto_aus.selectedOptionValue }}\n);",
+      "body": "INSERT INTO ausgabe (artikel, betrag, fk_kategorie_sid, datum, fk_konto_sid)\nVALUES (\n    {{InputArtikel_aus.text ?? \"\"}},\n    {{Number((InputBetrag_aus.text ?? \"0\").replace(/\\./g, '').replace(',', '.'))}}::numeric,\n    {{SelectKategorie.selectedOptionValue}},\n    {{DatePicker_aus.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',\n    {{SelectKonto_aus.selectedOptionValue}}\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
