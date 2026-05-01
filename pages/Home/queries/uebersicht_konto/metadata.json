@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    konto_name AS \"Konto\",\n\tto_char(saldo_anfang, 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n\tto_char(saldo_ende,   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n\tkonto_sid\nFROM v_monatssalden\nWHERE monat = '2026-04-01'\n\nUNION ALL\n\nSELECT\n    'Gesamt' AS \"Konto\",\n    to_char(SUM(saldo_anfang), 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n    to_char(SUM(saldo_ende),   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n    999999 AS konto_sid\nFROM v_monatssalden\nWHERE monat = '2026-04-01'\n\norder by konto_sid\n",
+      "body": "SELECT\n    konto_name AS \"Konto\",\n\tto_char(saldo_anfang, 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n\tto_char(saldo_ende,   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n\tkonto_sid\nFROM v_monatssalden\nWHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\n\nUNION ALL\n\nSELECT\n    'Gesamt' AS \"Konto\",\n    to_char(SUM(saldo_anfang), 'FM€ 999G999G990D00') AS \"Anfangssaldo\",\n    to_char(SUM(saldo_ende),   'FM€ 999G999G990D00') AS \"akt. Saldo\",\n    999999 AS konto_sid\nFROM v_monatssalden\nWHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\norder by konto_sid\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "uebersicht_konto",
     "pageId": "Home",
     "runBehaviour": "AUTOMATIC",

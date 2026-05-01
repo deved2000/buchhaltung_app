@@ -1,8 +1,8 @@
 INSERT INTO einnahme (fk_quelle_sid, beschreibung, betrag, datum, fk_konto_sid)
 VALUES (
     {{SelectQuelle.selectedOptionValue}},
-    {{InputBeschreibung_ein.text}},
-    {{Number(InputBetrag_ein.text.replace(/\./g, '').replace(',', '.'))}}::numeric,
+    {{InputBeschreibung_ein.text ?? null}},
+    {{Number((InputBetrag_ein.text ?? "0").replace(/\./g, '').replace(',', '.'))}}::numeric,
     {{DatePicker_ein.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin',
     {{SelectKonto_ein.selectedOptionValue}}
 );
