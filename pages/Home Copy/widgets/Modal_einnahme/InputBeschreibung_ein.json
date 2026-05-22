@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 43,
+  "bottomRow": 12,
   "boxShadow": "none",
-  "defaultText": "{{Table_tra.selectedRow.Beschreibung}}",
+  "defaultText": "{{Table_ein.selectedRow?.beschreibung}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -32,7 +32,7 @@
   "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 2,
+  "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -41,19 +41,19 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "originalBottomRow": 43,
-  "originalTopRow": 36,
+  "originalBottomRow": 15,
+  "originalTopRow": 8,
   "parentColumnSpace": 7.1171875,
-  "parentId": "7wxdkt1i1l",
+  "parentId": "mlgad5hyhf",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 51,
+  "rightColumn": 50,
   "showStepArrows": false,
-  "topRow": 36,
+  "topRow": 5,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "2ejx8dt837",
-  "widgetName": "InputBeschreibung_tra"
+  "widgetId": "6lxrudu621",
+  "widgetName": "InputBeschreibung_ein"
 }

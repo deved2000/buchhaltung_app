@@ -1,12 +1,13 @@
 {
   "appIsExample": false,
   "appLayout": {
-    "type": "FLUID"
+    "type": "DESKTOP"
   },
   "applicationVersion": 2,
   "collapseInvisibleWidgets": true,
   "color": "#D6D1F2",
   "evaluationVersion": 2,
+  "icon": "bar-graph",
   "pages": [
     {
       "id": "Home",
@@ -19,9 +20,13 @@
     {
       "id": "Schuldner",
       "isDefault": false
+    },
+    {
+      "id": "Home Copy",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {
-    "type": "FLUID"
+    "type": "DESKTOP"
   }
 }

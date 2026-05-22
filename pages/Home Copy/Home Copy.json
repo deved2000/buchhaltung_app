@@ -1,12 +1,12 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_de9f0710-f777-4e8f-b7a8-31be30d6bf1e",
+  "gitSyncId": "69f3bfcc0e126805caeeef91_6be6d3c9-fd99-4600-b8e5-a95bbbb32f01",
   "unpublishedPage": {
     "isHidden": false,
     "layouts": [
       {
         "dsl": {
           "backgroundColor": "none",
-          "bottomRow": 1710,
+          "bottomRow": 1950,
           "canExtend": true,
           "containerStyle": "none",
           "detachFromLayout": true,
@@ -27,7 +27,7 @@
         }
       }
     ],
-    "name": "Home",
-    "slug": "home"
+    "name": "Home Copy",
+    "slug": "home-copy"
   }
 }

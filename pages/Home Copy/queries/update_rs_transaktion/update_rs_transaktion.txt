@@ -1,0 +1,2 @@
+UPDATE transaktion SET fk_recordstate_sid = 2
+WHERE sid = {{Table_tra.selectedRow.sid}};

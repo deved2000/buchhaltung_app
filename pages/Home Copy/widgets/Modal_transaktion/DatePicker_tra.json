@@ -1,11 +1,13 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 43,
+  "bottomRow": 27,
   "boxShadow": "none",
-  "defaultText": "{{Table_tra.selectedRow.Beschreibung}}",
+  "closeOnSelection": true,
+  "dateFormat": "DD/MM/YYYY",
+  "datePickerType": "DATE_PICKER",
+  "defaultDate": "{{\n  Table_tra.selectedRow.datum \n    ? new Date(Table_tra.selectedRow.datum) \n    : new Date()\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,46 +16,51 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultText"
+      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    }
+  ],
   "dynamicTriggerPathList": [],
-  "iconAlign": "left",
-  "inputType": "TEXT",
+  "firstDayOfWeek": "1",
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "5um9waqwli",
-  "label": "Beschreibung",
+  "key": "nzg94ohf52",
+  "label": "Datum",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 2,
+  "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
+  "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 16,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 21,
-  "mobileTopRow": 9,
+  "mobileBottomRow": 44,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 22,
+  "mobileTopRow": 37,
   "needsErrorInfo": false,
-  "originalBottomRow": 43,
-  "originalTopRow": 36,
+  "originalBottomRow": 27,
+  "originalTopRow": 20,
   "parentColumnSpace": 7.1171875,
   "parentId": "7wxdkt1i1l",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "resetOnSubmit": true,
   "responsiveBehavior": "fill",
   "rightColumn": 51,
-  "showStepArrows": false,
-  "topRow": 36,
-  "type": "INPUT_WIDGET_V2",
+  "shortcuts": false,
+  "timePrecision": "None",
+  "topRow": 20,
+  "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "2ejx8dt837",
-  "widgetName": "InputBeschreibung_tra"
+  "widgetId": "76yolaoxao",
+  "widgetName": "DatePicker_tra"
 }

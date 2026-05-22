@@ -1,0 +1,2 @@
+UPDATE einnahme SET fk_recordstate_sid = 2
+WHERE sid = {{Table_ein.selectedRow.sid}};

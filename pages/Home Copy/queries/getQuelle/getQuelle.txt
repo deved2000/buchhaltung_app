@@ -1,0 +1,6 @@
+SELECT q.sid, q.aname
+FROM quelle q
+LEFT JOIN einnahme e ON e.fk_quelle_sid = q.sid AND e.fk_recordstate_sid = 0
+WHERE q.fk_recordstate_sid = 0
+GROUP BY q.sid, q.aname
+ORDER BY COUNT(e.sid) DESC, q.aname;

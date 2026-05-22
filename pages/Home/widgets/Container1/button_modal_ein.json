@@ -1,0 +1,60 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 51,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "19zpstdkci",
+  "leftColumn": 32,
+  "minWidth": 120,
+  "mobileBottomRow": 143,
+  "mobileLeftColumn": 7,
+  "mobileRightColumn": 23,
+  "mobileTopRow": 139,
+  "needsErrorInfo": false,
+  "onClick": "{{ showModal('Modal_einnahme') }}",
+  "originalBottomRow": 80,
+  "originalTopRow": 76,
+  "parentColumnSpace": 20.5625,
+  "parentId": "ze2vtq5hq0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 60,
+  "text": "{{ Table_ein.selectedRow?.sid != null && Table_ein.selectedRow?.sid !== \"\" ? \"Eingabe ändern\" : \"Eingabe hinzufügen\" }}",
+  "topRow": 47,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "1vn5qp0mk2",
+  "widgetName": "button_modal_ein"
+}
