@@ -372,7 +372,7 @@
       "label": "Datum",
       "notation": "standard",
       "originalId": "datum",
-      "outputFormat": "YYYY-MM-DD",
+      "outputFormat": "DD/MM/YY",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,

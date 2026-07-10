@@ -5,9 +5,9 @@ export default {
                 await update_rs_ausgabe.run();
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
-							  await uebersicht_konto.run();
-							 	await uebersicht_budget.run();
-							  await uebersicht_allgemein.run();
+                await uebersicht_konto.run();
+                await uebersicht_budget.run();
+                await uebersicht_allgemein.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');
                 resetWidget('SelectKategorie');
@@ -18,7 +18,9 @@ export default {
             } else {
                 await insertAusgabe.run();
                 await monatsliste_aus.run();
-							  await uebersicht_konto.run();
+                await uebersicht_konto.run();
+                await uebersicht_budget.run();
+                await uebersicht_allgemein.run();
                 resetWidget('InputArtikel_aus');
                 resetWidget('InputBetrag_aus');
                 resetWidget('SelectKategorie');
