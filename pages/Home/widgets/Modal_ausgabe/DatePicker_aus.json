@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD/MM/YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\n  Table_aus.selectedRow.datum \n    ? new Date(Table_aus.selectedRow.datum) \n    : new Date()\n}}",
+  "defaultDate": "{{\n  Table_aus.selectedRow.Datum \n    ? new Date(Table_aus.selectedRow.Datum) \n    : new Date()\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

@@ -5,6 +5,8 @@ export default {
                 await update_rs_einnahme.run();
                 await insertEinnahme.run();
 							  await uebersicht_konto.run();
+							  await uebersicht_budget.run();
+							  await uebersicht_allgemein.run();
                 await monatsliste_ein.run();
                 resetWidget('Table_ein');
                 showAlert('Einnahme aktualisiert ✅', 'success');
