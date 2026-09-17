@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    ka.aname AS \"Kategorie\",\n    to_char(sum(a.betrag), 'FM€ 999G999G990D00') AS \"Betrag\"\nFROM ausgabe a\nINNER JOIN kategorie ka ON a.fk_kategorie_sid = ka.sid AND ka.fk_recordstate_sid = 0\nWHERE a.fk_recordstate_sid = 0 \n    AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\nGROUP BY ka.aname\nORDER BY sum(a.betrag) DESC;",
+      "body": "SELECT \"Kategorie\", to_char(summe, 'FM€ 999G999G990D00') AS \"Betrag\"\nFROM (\n    SELECT ka.aname AS \"Kategorie\", sum(a.betrag) AS summe, 0 AS sortierung\n    FROM ausgabe a\n    INNER JOIN kategorie ka \n            ON a.fk_kategorie_sid = ka.sid \n           AND ka.fk_recordstate_sid = 0\n    WHERE a.fk_recordstate_sid = 0 \n      AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\n    GROUP BY ka.aname\n\n    UNION ALL\n\n    SELECT 'Gesamt', sum(a.betrag), 1\n    FROM ausgabe a\n    WHERE a.fk_recordstate_sid = 0 \n      AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\n) t\nORDER BY sortierung, summe DESC;\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

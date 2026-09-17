@@ -1,0 +1,7 @@
+SELECT monat,
+       monat_label,
+       kategorie,
+       betrag::float8 AS betrag
+FROM v_ausgaben_monat_kategorie
+WHERE monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin') - interval '11 months')::date
+ORDER BY monat, kategorie;
