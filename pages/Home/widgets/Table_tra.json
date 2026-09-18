@@ -41,11 +41,11 @@
     "monat",
     "Beschreibung",
     "Betrag",
-    "Konto_von",
-    "Konto_zu",
-    "Schuldner"
+    "Schuldner",
+    "Konto_von1",
+    "Konto_zu1"
   ],
-  "columnUpdatedAt": 1783667335022,
+  "columnUpdatedAt": 1789728680507,
   "columnWidthMap": {
     "Beschreibung": 137,
     "Betrag": 93,
@@ -104,13 +104,13 @@
       "key": "primaryColumns.Betrag.computedValue"
     },
     {
-      "key": "primaryColumns.Konto_von.computedValue"
-    },
-    {
-      "key": "primaryColumns.Konto_zu.computedValue"
-    },
-    {
       "key": "primaryColumns.Schuldner.computedValue"
+    },
+    {
+      "key": "primaryColumns.Konto_von1.computedValue"
+    },
+    {
+      "key": "primaryColumns.Konto_zu1.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -214,20 +214,20 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "Konto_von": {
-      "alias": "Konto von",
+    "Konto_von1": {
+      "alias": "Konto_von",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table_tra.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Konto_von\"])) : currentRow[\"Konto_von\"] })()}}",
+      "computedValue": "{{(() => { const tableData = Table_tra.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Konto_von\"])) : Konto_von })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "Konto_von",
+      "id": "Konto_von1",
       "index": 4,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -239,7 +239,7 @@
       "isVisible": true,
       "label": "Konto_von",
       "notation": "standard",
-      "originalId": "Konto von",
+      "originalId": "Konto_von",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
@@ -248,20 +248,20 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "Konto_zu": {
-      "alias": "Konto zu",
+    "Konto_zu1": {
+      "alias": "Konto_zu",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table_tra.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Konto_zu\"])) : currentRow[\"Konto_zu\"] })()}}",
+      "computedValue": "{{(() => { const tableData = Table_tra.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Konto_zu\"])) : Konto_zu })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "Konto_zu",
+      "id": "Konto_zu1",
       "index": 6,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -273,7 +273,7 @@
       "isVisible": true,
       "label": "Konto_zu",
       "notation": "standard",
-      "originalId": "Konto zu",
+      "originalId": "Konto_zu",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
