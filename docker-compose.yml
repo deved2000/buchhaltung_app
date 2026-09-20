@@ -1,0 +1,33 @@
+name: buch_db_backup
+
+services:
+  appsmith:
+    image: appsmith/appsmith-ce:v2.4
+    container_name: appsmith
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - appsmith_data:/appsmith-stacks
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    container_name: buchhaltung-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: buchhaltung_db_local
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: <yourpassword>
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+
+volumes:
+  appsmith_data:
+    external: true
+  pg_data:
+    external: true
