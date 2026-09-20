@@ -1,24 +1,114 @@
-Ich habe diese App gebaut für meine eigene Buchhaltung.
+# Buchhaltung – Self-hosted Bookkeeping with Appsmith & PostgreSQL
 
-Sie ist nicht für Enduser gedacht, da es keinen Setup process gibt und ich es selber über SQL Staments mache.
+A small self-hosted bookkeeping app (German UI) for tracking income and expenses by category and month. The frontend is built with [Appsmith](https://www.appsmith.com/), the data lives in PostgreSQL, and everything runs with Docker Compose.
 
+## Features
 
+- Record income (*Einnahmen*) and expenses (*Ausgaben*) with category, amount and month
+- Account overview (*Kontoübersicht*)
+- Monthly expense breakdown by category, including charts
+- Soft delete: rows are never physically removed, they are marked via `fk_recordstate_sid` (`0` = active)
+- Runs fully local, no cloud services needed
 
+## Repository structure
 
+```
+.
+├── appsmith/              # Exported Appsmith application (import this into Appsmith)
+├── database/
+│   └── schema.sql         # Empty database: tables, views, functions, sequences – no data
+├── docker-compose.yml     # Appsmith and PostgreSQL (passwords removed)
+└── README.md
+```
 
+> Adjust the paths above if your folders are named differently.
 
+## Stack
 
+| Service                | Image                  | Purpose                                   |
+|------------------------|------------------------|-------------------------------------------|
+| `appsmith`             | `appsmith/appsmith-ce` | Frontend / app builder (with its built-in database) |
+| `buchhaltung-postgres` | `postgres:16`          | Bookkeeping data                          |
 
+## Requirements
 
+- Docker and Docker Compose v2
+- A CPU with AVX support (required by Appsmith's built-in database; any reasonably modern x86 CPU has it)
+- About 3 GB of free RAM (Appsmith is the heaviest part)
 
-![](https://raw.githubusercontent.com/appsmithorg/appsmith/release/static/appsmith_logo_primary.png)
+## Installation
 
-This app is built using Appsmith. Turn any datasource into an internal app in minutes. Appsmith lets you drag-and-drop components to build dashboards, write logic with JavaScript objects and connect to any API, database or GraphQL source.
+### 1. Clone the repository
 
-![](https://raw.githubusercontent.com/appsmithorg/appsmith/release/static/images/integrations.png)
+```bash
+git clone https://github.com/<your-user>/<your-repo>.git
+cd <your-repo>
+```
 
-### [Github](https://github.com/appsmithorg/appsmith) • [Docs](https://docs.appsmith.com/?utm_source=github&utm_medium=social&utm_content=appsmith_docs&utm_campaign=null&utm_term=appsmith_docs) • [Community](https://community.appsmith.com/) • [Tutorials](https://github.com/appsmithorg/appsmith/tree/update/readme#tutorials) • [Youtube](https://www.youtube.com/appsmith) • [Discord](https://discord.gg/rBTTVJp)
+### 2. Set passwords
 
-##### You can visit the application using the below link
+The `docker-compose.yml` in this repo contains no passwords. Fill them in before starting, either directly in the file or (recommended) in a `.env` file next to it:
 
-###### [![](https://assets.appsmith.com/git-sync/Buttons.svg) ](http://localhost:8080/applications/69978066a9cbc329806ad520/pages/69978066a9cbc329806ad522) [![](https://assets.appsmith.com/git-sync/Buttons2.svg)](http://localhost:8080/applications/69978066a9cbc329806ad520/pages/69978066a9cbc329806ad522/edit)
+```env
+POSTGRES_USER=buchhaltung
+POSTGRES_PASSWORD=change-me
+POSTGRES_DB=buchhaltung_db
+```
+
+Never commit your `.env` file. Add it to `.gitignore`.
+
+### 3. Start the containers
+
+```bash
+docker compose up -d
+```
+
+### 4. Create the database schema
+
+```bash
+docker exec -i buchhaltung-postgres psql -U buchhaltung -d buchhaltung_db < database/schema.sql
+```
+
+This creates all tables, views and functions, plus the required lookup values (e.g. record states). It contains no bookkeeping data.
+
+### 5. Import the app into Appsmith
+
+1. Open `http://<server-ip>:8080` and create an admin account.
+2. On the Appsmith home page choose **Create new → Import** and select the file from the `appsmith/` folder.
+3. When asked for the datasource, enter the PostgreSQL connection:
+   - Host: `buchhaltung-postgres`
+   - Port: `5432`
+   - Database: `buchhaltung_db`
+   - User / password: as set in step 2
+
+Datasource credentials are never included in an Appsmith export, so you always have to enter them after importing.
+
+## Backups
+
+PostgreSQL (bookkeeping data):
+
+```bash
+docker exec buchhaltung-postgres pg_dump -U buchhaltung buchhaltung_db \
+  | gzip > buchhaltung_db_$(date +%F_%H-%M-%S).sql.gz
+```
+
+Appsmith (apps, users and settings):
+
+```bash
+docker exec appsmith appsmithctl backup
+```
+
+The backup archive is written to `/appsmith-stacks/data/backup/` inside the container, which lives in the Appsmith volume. Restore it with `docker exec -it appsmith appsmithctl restore`.
+
+Restore PostgreSQL:
+
+```bash
+gunzip -c buchhaltung_db_<date>.sql.gz | docker exec -i buchhaltung-postgres psql -U buchhaltung -d buchhaltung_db
+```
+
+## Troubleshooting
+
+**Appsmith keeps showing "Appsmith is starting" and reloading.** Check the logs with `docker logs appsmith --since 2m`. First start can take a few minutes. If you see `AVX instruction not found`, your CPU is too old for Appsmith's built-in database.
+
+**Charts show nothing although the query returns data.** PostgreSQL `numeric` values sometimes arrive in Appsmith as strings. Cast amounts with `::float8` in the query for chart data.
+
