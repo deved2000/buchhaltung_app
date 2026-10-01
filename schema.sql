@@ -2,7 +2,6 @@
 -- PostgreSQL database dump
 --
 
-\restrict taWzagBxNExa4hHmbOWM0D0L8H5hw0ORxqPBFNu5LL8ga8ixmimOQ5hk9EH2lDi
 
 -- Dumped from database version 16.13 (Debian 16.13-1.pgdg13+1)
 -- Dumped by pg_dump version 16.13 (Debian 16.13-1.pgdg13+1)
@@ -17,6 +16,20 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: btree_gist; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
 
 --
 -- Name: sync_monat(); Type: FUNCTION; Schema: public; Owner: -
@@ -35,6 +48,40 @@ $$;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: arbeitgeber; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.arbeitgeber (
+    sid integer NOT NULL,
+    name character varying(255) NOT NULL,
+    ort character varying(255),
+    notiz character varying(200),
+    erstellt_am timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    fk_recordstate_sid integer DEFAULT 0 NOT NULL
+);
+
+
+--
+-- Name: arbeitgeber_sid_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.arbeitgeber_sid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: arbeitgeber_sid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.arbeitgeber_sid_seq OWNED BY public.arbeitgeber.sid;
+
 
 --
 -- Name: ausgabe; Type: TABLE; Schema: public; Owner: -
@@ -113,6 +160,44 @@ CREATE SEQUENCE public.einnahmen_sid_seq
 --
 
 ALTER SEQUENCE public.einnahmen_sid_seq OWNED BY public.einnahme.sid;
+
+
+--
+-- Name: gehalt; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.gehalt (
+    sid integer NOT NULL,
+    fk_arbeitgeber_sid integer NOT NULL,
+    betrag numeric(10,2) NOT NULL,
+    notiz character varying(200),
+    validfrom date DEFAULT CURRENT_DATE NOT NULL,
+    validto date,
+    erstellt_am timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    fk_recordstate_sid integer DEFAULT 0 NOT NULL,
+    CONSTRAINT gehalt_betrag_check CHECK ((betrag > (0)::numeric)),
+    CONSTRAINT gehalt_zeitraum_check CHECK (((validto IS NULL) OR (validto > validfrom)))
+);
+
+
+--
+-- Name: gehalt_sid_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.gehalt_sid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: gehalt_sid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.gehalt_sid_seq OWNED BY public.gehalt.sid;
 
 
 --
@@ -453,6 +538,13 @@ CREATE VIEW public.v_monatssalden AS
 
 
 --
+-- Name: arbeitgeber sid; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.arbeitgeber ALTER COLUMN sid SET DEFAULT nextval('public.arbeitgeber_sid_seq'::regclass);
+
+
+--
 -- Name: ausgabe sid; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -464,6 +556,13 @@ ALTER TABLE ONLY public.ausgabe ALTER COLUMN sid SET DEFAULT nextval('public.aus
 --
 
 ALTER TABLE ONLY public.einnahme ALTER COLUMN sid SET DEFAULT nextval('public.einnahmen_sid_seq'::regclass);
+
+
+--
+-- Name: gehalt sid; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.gehalt ALTER COLUMN sid SET DEFAULT nextval('public.gehalt_sid_seq'::regclass);
 
 
 --
@@ -509,6 +608,14 @@ ALTER TABLE ONLY public.transaktion ALTER COLUMN sid SET DEFAULT nextval('public
 
 
 --
+-- Name: arbeitgeber arbeitgeber_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.arbeitgeber
+    ADD CONSTRAINT arbeitgeber_pkey PRIMARY KEY (sid);
+
+
+--
 -- Name: ausgabe ausgaben_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -522,6 +629,22 @@ ALTER TABLE ONLY public.ausgabe
 
 ALTER TABLE ONLY public.einnahme
     ADD CONSTRAINT einnahmen_pkey PRIMARY KEY (sid);
+
+
+--
+-- Name: gehalt gehalt_keine_ueberlappung; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.gehalt
+    ADD CONSTRAINT gehalt_keine_ueberlappung EXCLUDE USING gist (fk_arbeitgeber_sid WITH =, daterange(validfrom, validto, '[)'::text) WITH &&) WHERE ((fk_recordstate_sid = 0));
+
+
+--
+-- Name: gehalt gehalt_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.gehalt
+    ADD CONSTRAINT gehalt_pkey PRIMARY KEY (sid);
 
 
 --
@@ -634,16 +757,22 @@ CREATE TRIGGER trg_sync_monat_transaktion BEFORE INSERT OR UPDATE ON public.tran
 
 
 --
+-- Name: gehalt gehalt_fk_arbeitgeber_sid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.gehalt
+    ADD CONSTRAINT gehalt_fk_arbeitgeber_sid_fkey FOREIGN KEY (fk_arbeitgeber_sid) REFERENCES public.arbeitgeber(sid);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
-\unrestrict taWzagBxNExa4hHmbOWM0D0L8H5hw0ORxqPBFNu5LL8ga8ixmimOQ5hk9EH2lDi
 
 --
 -- PostgreSQL database dump
 --
 
-\restrict mQKWPl0WFxTJFtjZCPfmMkcFq6fwmzPHMF1n33x7qeXeJC1G2p14l76KY2OMDJS
 
 -- Dumped from database version 16.13 (Debian 16.13-1.pgdg13+1)
 -- Dumped by pg_dump version 16.13 (Debian 16.13-1.pgdg13+1)
@@ -681,5 +810,4 @@ SELECT pg_catalog.setval('public.recordstate_sid_seq', 1, false);
 -- PostgreSQL database dump complete
 --
 
-\unrestrict mQKWPl0WFxTJFtjZCPfmMkcFq6fwmzPHMF1n33x7qeXeJC1G2p14l76KY2OMDJS
 
