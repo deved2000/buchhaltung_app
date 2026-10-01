@@ -1,6 +1,12 @@
+WITH auswahl AS (
+    SELECT ({{ DatePicker_aus.selectedDate || moment().toISOString() }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date AS tag
+)
 SELECT k.sid, k.aname
 FROM konto k
+CROSS JOIN auswahl d
 LEFT JOIN ausgabe a ON a.fk_konto_sid = k.sid AND a.fk_recordstate_sid = 0
 WHERE k.fk_recordstate_sid = 0
+  AND (k.validfrom IS NULL OR k.validfrom::date <= d.tag)
+  AND (k.validto   IS NULL OR k.validto::date   >= d.tag)
 GROUP BY k.sid, k.aname
 ORDER BY COUNT(a.sid) DESC, k.aname;

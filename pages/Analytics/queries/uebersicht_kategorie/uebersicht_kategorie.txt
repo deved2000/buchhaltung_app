@@ -1,9 +1,20 @@
-SELECT 
-    ka.aname AS "Kategorie",
-    to_char(sum(a.betrag), 'FM€ 999G999G990D00') AS "Betrag"
-FROM ausgabe a
-INNER JOIN kategorie ka ON a.fk_kategorie_sid = ka.sid AND ka.fk_recordstate_sid = 0
-WHERE a.fk_recordstate_sid = 0 
-    AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-GROUP BY ka.aname
-ORDER BY sum(a.betrag) DESC;
+SELECT "Kategorie", to_char(summe, 'FM€ 999G999G990D00') AS "Betrag"
+FROM (
+    SELECT ka.aname AS "Kategorie", sum(a.betrag) AS summe, 0 AS sortierung
+    FROM ausgabe a
+    INNER JOIN kategorie ka 
+            ON a.fk_kategorie_sid = ka.sid 
+           AND ka.fk_recordstate_sid = 0
+    WHERE a.fk_recordstate_sid = 0 
+      AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+    GROUP BY ka.aname
+
+    UNION ALL
+
+    SELECT 'Gesamt', sum(a.betrag), 1
+    FROM ausgabe a
+    WHERE a.fk_recordstate_sid = 0 
+      AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+) t
+ORDER BY sortierung, summe DESC;
+

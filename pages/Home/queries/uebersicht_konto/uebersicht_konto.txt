@@ -1,18 +1,28 @@
+WITH auswahl AS (
+    SELECT date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date AS monat
+),
+salden AS (
+    SELECT s.konto_name, s.saldo_anfang, s.saldo_ende, s.konto_sid
+    FROM v_monatssalden s
+    JOIN auswahl a ON s.monat = a.monat
+    JOIN konto k   ON k.sid = s.konto_sid
+    WHERE k.fk_recordstate_sid = 0
+      AND (k.validfrom IS NULL OR date_trunc('month', k.validfrom)::date <= a.monat)
+      AND (k.validto   IS NULL OR date_trunc('month', k.validto)::date   >= a.monat)
+)
 SELECT
     konto_name AS "Konto",
-	to_char(saldo_anfang, 'FM€ 999G999G990D00') AS "Anfangssaldo",
-	to_char(saldo_ende,   'FM€ 999G999G990D00') AS "akt. Saldo",
-	konto_sid
-FROM v_monatssalden
-WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+    to_char(saldo_anfang, 'FM€ 999G999G990D00') AS "Anfangssaldo",
+    to_char(saldo_ende,   'FM€ 999G999G990D00') AS "akt. Saldo",
+    konto_sid
+FROM salden
 
 UNION ALL
 
 SELECT
-    'Gesamt' AS "Konto",
-    to_char(SUM(saldo_anfang), 'FM€ 999G999G990D00') AS "Anfangssaldo",
-    to_char(SUM(saldo_ende),   'FM€ 999G999G990D00') AS "akt. Saldo",
-    999999 AS konto_sid
-FROM v_monatssalden
-WHERE monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-order by konto_sid
+    'Gesamt',
+    to_char(SUM(saldo_anfang), 'FM€ 999G999G990D00'),
+    to_char(SUM(saldo_ende),   'FM€ 999G999G990D00'),
+    999999
+FROM salden
+ORDER BY konto_sid;

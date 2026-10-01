@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT k.sid, k.aname\nFROM konto k\nLEFT JOIN ausgabe a ON a.fk_konto_sid = k.sid AND a.fk_recordstate_sid = 0\nWHERE k.fk_recordstate_sid = 0\nGROUP BY k.sid, k.aname\nORDER BY COUNT(a.sid) DESC, k.aname;",
+      "body": "WITH auswahl AS (\n    SELECT ({{ DatePicker_aus.selectedDate || moment().toISOString() }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date AS tag\n)\nSELECT k.sid, k.aname\nFROM konto k\nCROSS JOIN auswahl d\nLEFT JOIN ausgabe a ON a.fk_konto_sid = k.sid AND a.fk_recordstate_sid = 0\nWHERE k.fk_recordstate_sid = 0\n  AND (k.validfrom IS NULL OR k.validfrom::date <= d.tag)\n  AND (k.validto   IS NULL OR k.validto::date   >= d.tag)\nGROUP BY k.sid, k.aname\nORDER BY COUNT(a.sid) DESC, k.aname;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "getKonto",
     "pageId": "Home",
     "runBehaviour": "AUTOMATIC",
