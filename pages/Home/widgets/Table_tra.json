@@ -41,11 +41,11 @@
     "monat",
     "Beschreibung",
     "Betrag",
-    "Schuldner",
-    "Konto_von1",
-    "Konto_zu1"
+    "Konto_von",
+    "Konto_zu",
+    "Schuldner"
   ],
-  "columnUpdatedAt": 1789728680507,
+  "columnUpdatedAt": 1790877998493,
   "columnWidthMap": {
     "Beschreibung": 137,
     "Betrag": 93,
@@ -104,13 +104,13 @@
       "key": "primaryColumns.Betrag.computedValue"
     },
     {
+      "key": "primaryColumns.Konto_von.computedValue"
+    },
+    {
+      "key": "primaryColumns.Konto_zu.computedValue"
+    },
+    {
       "key": "primaryColumns.Schuldner.computedValue"
-    },
-    {
-      "key": "primaryColumns.Konto_von1.computedValue"
-    },
-    {
-      "key": "primaryColumns.Konto_zu1.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -214,7 +214,7 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "Konto_von1": {
+    "Konto_von": {
       "alias": "Konto_von",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
@@ -227,7 +227,7 @@
       "enableSort": true,
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "Konto_von1",
+      "id": "Konto_von",
       "index": 4,
       "isCellEditable": false,
       "isCellVisible": true,
@@ -248,7 +248,7 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "Konto_zu1": {
+    "Konto_zu": {
       "alias": "Konto_zu",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
@@ -261,7 +261,7 @@
       "enableSort": true,
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "Konto_zu1",
+      "id": "Konto_zu",
       "index": 6,
       "isCellEditable": false,
       "isCellVisible": true,

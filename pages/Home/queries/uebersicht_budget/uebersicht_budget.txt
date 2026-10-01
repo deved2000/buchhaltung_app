@@ -1,42 +1,36 @@
-WITH budget AS (
-    SELECT COALESCE(
-        (SELECT e.betrag
-         FROM einnahme e
-         WHERE e.fk_quelle_sid = 4 AND e.fk_recordstate_sid = 0
-         ORDER BY e.datum DESC
-         LIMIT 1),
-        1548.65
-    ) AS einkommen,
-
-    (SELECT a.betrag
-     FROM ausgabe a
-     WHERE a.fk_kategorie_sid = 1
-         AND a.fk_recordstate_sid = 0
-         AND a.betrag > 400
-         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-     ORDER BY a.datum DESC
-     LIMIT 1
-    ) AS miete,
-
-    (SELECT COALESCE(SUM(a.betrag), 0)
-     FROM ausgabe a
-     WHERE a.fk_kategorie_sid = 6
-         AND a.fk_recordstate_sid = 0
-         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-    ) AS investment,
-
-    (SELECT COALESCE(SUM(a.betrag), 0)
-     FROM ausgabe a
-     WHERE a.fk_recordstate_sid = 0
-         AND a.monat = date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
-    ) AS ausgaben_gesamt
+WITH params AS (
+    SELECT monat,
+           (monat + interval '1 month' - interval '1 day')::date AS monatsende
+    FROM (
+        SELECT date_trunc('month', {{DatePicker_month.selectedDate}}::timestamptz AT TIME ZONE 'Europe/Berlin')::date AS monat
+    ) m
+),
+einkommen AS (
+    SELECT COALESCE(SUM(g.betrag), 0) AS einkommen
+    FROM gehalt g, params p
+    WHERE g.fk_recordstate_sid = 0
+      AND g.validfrom <= p.monatsende
+      AND (g.validto IS NULL OR g.validto > p.monatsende)
+),
+ausgaben AS (
+    SELECT
+        COALESCE((array_agg(a.betrag ORDER BY a.datum DESC)
+                  FILTER (WHERE a.fk_kategorie_sid = 1 AND a.betrag > 400))[1], 0) AS miete,
+        COALESCE(SUM(a.betrag) FILTER (WHERE a.fk_kategorie_sid = 6), 0)          AS investment,
+        COALESCE(SUM(a.betrag), 0)                                                AS gesamt
+    FROM ausgabe a, params p
+    WHERE a.fk_recordstate_sid = 0
+      AND a.monat = p.monat
 )
-SELECT 'Einkommen'  AS "Budget", to_char(einkommen,                                        'FM€ 999G999G990D00') AS "Betrag" FROM budget
-UNION ALL
-SELECT 'Miete'      AS "Budget", to_char(miete,                                            'FM€ 999G999G990D00') AS "Betrag" FROM budget
-UNION ALL
-SELECT 'Investment' AS "Budget", to_char(investment,                                       'FM€ 999G999G990D00') AS "Betrag" FROM budget
-UNION ALL
-SELECT 'Ausgaben'   AS "Budget", to_char(ausgaben_gesamt - miete - investment,             'FM€ 999G999G990D00') AS "Betrag" FROM budget
-UNION ALL
-SELECT 'Sparen'     AS "Budget", to_char(einkommen - ausgaben_gesamt,                      'FM€ 999G999G990D00') AS "Betrag" FROM budget;
+SELECT v.budget                                 AS "Budget",
+       to_char(v.betrag, 'FM€ 999G999G990D00')  AS "Betrag"
+FROM einkommen e
+CROSS JOIN ausgaben a
+CROSS JOIN LATERAL (VALUES
+    (1, 'Einkommen',  e.einkommen),
+    (2, 'Miete',      a.miete),
+    (3, 'Investment', a.investment),
+    (4, 'Ausgaben',   a.gesamt - a.miete - a.investment),
+    (5, 'Sparen',     e.einkommen - a.gesamt)
+) AS v(nr, budget, betrag)
+ORDER BY v.nr;
