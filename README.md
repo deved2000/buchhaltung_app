@@ -71,6 +71,10 @@ docker exec -i buchhaltung-postgres psql -U buchhaltung -d buchhaltung_db < data
 
 This creates all tables, views and functions, plus the required lookup values (e.g. record states). It contains no bookkeeping data.
 
+Here the ER-Modell
+
+![ER-Modell](images/ERP-Buchhaltung-DB.drawio.png)
+
 ### 5. Import the app into Appsmith
 
 1. Open `http://<server-ip>:8080` and create an admin account.
