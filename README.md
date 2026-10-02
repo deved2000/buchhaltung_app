@@ -2,7 +2,7 @@
 
 A small self-hosted bookkeeping app (German UI) for tracking income and expenses by category and month. The frontend is built with [Appsmith](https://www.appsmith.com/), the data lives in PostgreSQL, and everything runs with Docker Compose.
 
-## Features
+## Features (ich bin ein böser Hacker)
 
 - Record income (*Einnahmen*) and expenses (*Ausgaben*) with category, amount and month
 - Account overview (*Kontoübersicht*)
