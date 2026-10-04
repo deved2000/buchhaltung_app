@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT monat,\n       monat_label,\n       kategorie,\n       betrag::float8 AS betrag\nFROM v_ausgaben_monat_kategorie\nWHERE monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin') - interval '11 months')::date\nORDER BY monat, kategorie;",
+      "body": "SELECT monat,\n       monat_label,\n       kategorie,\n       betrag::float8 AS betrag,\n       monat_gesamt::float8 AS monat_gesamt\nFROM v_ausgaben_monat_kategorie\nWHERE {{Select_zeitraum.selectedOptionValue}}::int = 0\n   OR monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')\n                - make_interval(months => {{Select_zeitraum.selectedOptionValue}}::int - 1))::date\nORDER BY monat, kategorie;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "Buchhaltung_DB",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "qryTrend",
     "pageId": "Analytics",
     "runBehaviour": "AUTOMATIC",

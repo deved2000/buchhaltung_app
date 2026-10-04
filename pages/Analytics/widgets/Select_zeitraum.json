@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 83,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  _.chain(qryTrend.data).groupBy('kategorie').map((rows, k) => ({ k: k, summe: _.sumBy(rows, 'betrag') })).orderBy('summe', 'desc').take(5).map('k').value() ))(MultiSelect_kategorien.options, MultiSelect_kategorien.serverSideFiltering) }}",
+  "defaultOptionValue": "12",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,9 +14,6 @@
     },
     {
       "key": "sourceData"
-    },
-    {
-      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -25,41 +22,46 @@
       "key": "sourceData"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "voktsypeij",
+  "key": "7u3h0k8l9b",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "Label",
+  "labelText": "Monate",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 6,
+  "leftColumn": 40,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 83,
-  "mobileLeftColumn": 6,
-  "mobileRightColumn": 26,
-  "mobileTopRow": 76,
+  "mobileBottomRow": 84,
+  "mobileLeftColumn": 37,
+  "mobileRightColumn": 57,
+  "mobileTopRow": 77,
   "needsErrorInfo": false,
-  "optionLabel": "label",
+  "onOptionChange": "{{qryTrend.run()}}",
+  "optionLabel": "value",
   "optionValue": "value",
   "parentColumnSpace": 20.5625,
   "parentId": "0",
   "parentRowSpace": 10,
-  "placeholderText": "Select option(s)",
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 40,
+  "rightColumn": 60,
   "serverSideFiltering": false,
-  "sourceData": "{{ [...new Set(qryTrend.data.map(r => r.kategorie))].map(k => ({ label: k, value: k })) }}",
+  "sourceData": "{{ [\n  { label: \"6 Monate\",  value: \"6\" },\n  { label: \"12 Monate\", value: \"12\" },\n  { label: \"2 Jahre\",   value: \"24\" },\n  { label: \"3 Jahre\",   value: \"36\" },\n  { label: \"5 Jahre\",   value: \"60\" },\n  { label: \"10 Jahre\",  value: \"120\" },\n  { label: \"Alles\",     value: \"0\" }\n] }}",
   "topRow": 76,
-  "type": "MULTI_SELECT_WIDGET_V2",
+  "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "w2x569ivdq",
-  "widgetName": "MultiSelect_kategorien"
+  "widgetId": "yfnd72vcwj",
+  "widgetName": "Select_zeitraum"
 }

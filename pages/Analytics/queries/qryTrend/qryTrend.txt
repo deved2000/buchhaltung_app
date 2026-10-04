@@ -1,7 +1,10 @@
 SELECT monat,
        monat_label,
        kategorie,
-       betrag::float8 AS betrag
+       betrag::float8 AS betrag,
+       monat_gesamt::float8 AS monat_gesamt
 FROM v_ausgaben_monat_kategorie
-WHERE monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin') - interval '11 months')::date
+WHERE {{Select_zeitraum.selectedOptionValue}}::int = 0
+   OR monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
+                - make_interval(months => {{Select_zeitraum.selectedOptionValue}}::int - 1))::date
 ORDER BY monat, kategorie;
