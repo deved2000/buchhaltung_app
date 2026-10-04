@@ -58,7 +58,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 44,
   "serverSideFiltering": false,
-  "sourceData": "{{ getKonto.data.map(k => ({ label: k.aname, value: k.sid })) }}",
+  "sourceData": "{{ getKonto_oForderung.data.map(k => ({ label: k.aname, value: k.sid })) }}",
   "topRow": 20,
   "type": "SELECT_WIDGET",
   "version": 1,

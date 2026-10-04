@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69978066a9cbc329806ad520_824da587-7ecb-4be5-add4-668ca193d1bd",
-  "id": "Home_getKonto",
+  "gitSyncId": "6a509a7ebbbf56036469b90c_ed28fffd-8109-4071-a2e2-6a0bd036179a",
+  "id": "Home_getKonto_oForderung",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT k.sid, k.aname from konto k\nWHERE k.fk_recordstate_sid = 0\n  AND (k.validfrom IS NULL OR k.validfrom::date <= {{DatePicker_month.selectedDate}})\n  AND (k.validto   IS NULL OR k.validto::date   >= {{DatePicker_month.selectedDate}})\norder by k.sid; ",
+      "body": "SELECT k.sid, k.aname from konto k\nWHERE k.fk_recordstate_sid = 0\n  AND (k.validfrom IS NULL OR k.validfrom::date <= {{DatePicker_month.selectedDate}})\n  AND (k.validto   IS NULL OR k.validto::date   >= {{DatePicker_month.selectedDate}})\n\tand k.sid <> 4\norder by k.sid; ",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "getKonto",
+    "name": "getKonto_oForderung",
     "pageId": "Home",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false

@@ -2,4 +2,5 @@ SELECT k.sid, k.aname from konto k
 WHERE k.fk_recordstate_sid = 0
   AND (k.validfrom IS NULL OR k.validfrom::date <= {{DatePicker_month.selectedDate}})
   AND (k.validto   IS NULL OR k.validto::date   >= {{DatePicker_month.selectedDate}})
+	and k.sid <> 4
 order by k.sid; 
