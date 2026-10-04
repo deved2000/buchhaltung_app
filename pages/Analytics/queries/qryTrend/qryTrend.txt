@@ -1,10 +1,34 @@
-SELECT monat,
-       monat_label,
-       kategorie,
-       betrag::float8 AS betrag,
-       monat_gesamt::float8 AS monat_gesamt
-FROM v_ausgaben_monat_kategorie
-WHERE {{Select_zeitraum.selectedOptionValue}}::int = 0
-   OR monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
-                - make_interval(months => {{Select_zeitraum.selectedOptionValue}}::int - 1))::date
-ORDER BY monat, kategorie;
+WITH p AS (
+  SELECT COALESCE(NULLIF('{{Select_zeitraum.selectedOptionValue}}', ''), '12')::int    AS monate,
+         COALESCE(NULLIF('{{Select_aggregation.selectedOptionValue}}', ''), '1')::int  AS schritt
+),
+basis AS (
+  SELECT v.monat, v.kategorie, v.betrag, p.schritt
+  FROM v_ausgaben_monat_kategorie v, p
+  WHERE p.monate = 0
+     OR v.monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
+                    - make_interval(months => p.monate - 1))::date
+),
+gruppiert AS (
+  SELECT
+    (date_trunc('year', monat)::date
+      + make_interval(months => ((extract(month from monat)::int - 1) / schritt) * schritt))::date AS bucket,
+    schritt,
+    kategorie,
+    sum(betrag) AS betrag
+  FROM basis
+  GROUP BY 1, 2, 3
+)
+SELECT
+  bucket,
+  CASE
+    WHEN schritt = 1  THEN to_char(bucket, 'MM.YYYY')
+    WHEN schritt = 12 THEN to_char(bucket, 'YYYY')
+    ELSE to_char(bucket, 'MM') || '–' ||
+         to_char(bucket + make_interval(months => schritt - 1), 'MM.YYYY')
+  END AS label,
+  kategorie,
+  betrag::float8 AS betrag,
+  sum(betrag) OVER (PARTITION BY bucket)::float8 AS bucket_gesamt
+FROM gruppiert
+ORDER BY bucket, kategorie;
