@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 83,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  _.chain(qryTrend.data).groupBy('kategorie').map((rows, k) => ({ k: k, summe: _.sumBy(rows, 'betrag') })).orderBy('summe', 'desc').take(5).map('k').value() ))(MultiSelect_kategorien.options, MultiSelect_kategorien.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  [\"Technik\", \"Klamotten\", \"Freizeit\" ] ))(MultiSelect_kategorien.options, MultiSelect_kategorien.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
