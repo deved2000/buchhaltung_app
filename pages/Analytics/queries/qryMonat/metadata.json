@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    kategorie                                                AS \"Kategorie\",\n    betrag::float8                                           AS \"Betrag\",\n    round(100.0 * betrag / nullif(monat_gesamt, 0), 1)::float8 AS \"Anteil\",\n    monat_gesamt::float8                                     AS \"Gesamt\"\nFROM v_ausgaben_monat_kategorie\nWHERE monat = date_trunc('month', {{ (DatePicker_month.selectedDate || new Date().toISOString()) }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\n  AND betrag > 0\nORDER BY betrag DESC;",
+      "body": "SELECT\n    kategorie                                                  AS \"Kategorie\",\n    farbe                                                      AS \"Farbe\",\n    betrag::float8                                             AS \"Betrag\",\n    round(100.0 * betrag / nullif(monat_gesamt, 0), 1)::float8 AS \"Anteil\",\n    monat_gesamt::float8                                       AS \"Gesamt\"\nFROM v_ausgaben_monat_kategorie\nWHERE monat = date_trunc('month', {{ (DatePicker_month.selectedDate || new Date().toISOString()) }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date\n  AND betrag > 0\nORDER BY betrag DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

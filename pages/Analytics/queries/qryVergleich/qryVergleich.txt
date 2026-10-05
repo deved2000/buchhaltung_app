@@ -1,0 +1,14 @@
+SELECT
+    kategorie                                          AS "Kategorie",
+    coalesce(farbe, '#999999')                         AS "Farbe",
+    coalesce(betrag, 0)::float8                        AS "Monat",
+    budget::float8                                     AS "Budget",
+    coalesce(schnitt_12m, 0)::float8                   AS "Schnitt",
+    CASE WHEN budget IS NULL OR budget = 0 THEN 0
+         ELSE round(100.0 * betrag / budget)::int END  AS "BudgetProzent",
+    (coalesce(betrag, 0) - coalesce(schnitt_12m, 0))::float8 AS "DiffSchnitt",
+    (budget IS NOT NULL)                               AS "HatBudget"
+FROM v_kategorie_monat_vergleich
+WHERE monat = date_trunc('month', {{ (DatePicker_month.selectedDate || new Date().toISOString()) }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
+  AND (betrag > 0 OR budget IS NOT NULL)
+ORDER BY betrag DESC;

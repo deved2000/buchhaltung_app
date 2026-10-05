@@ -56,7 +56,7 @@
   "mobileRightColumn": 27,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onDateSelected": "{{qryMonat.run()}}",
+  "onDateSelected": "{{qryMonat.run();\nqryVergleich.run()}}",
   "parentColumnSpace": 19.8125,
   "parentId": "0",
   "parentRowSpace": 10,
