@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n\t\ts.sid,\n    s.aname AS \"Schuldner\",\n    to_char(\n        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_zu_sid = 4), 0) -\n        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_von_sid = 4), 0),\n        'FM€ 999G999G990D00'\n    ) AS \"Schuldenstand\"\nFROM schuldner s\nleft JOIN transaktion t ON t.fk_schuldner_sid = s.sid AND t.fk_recordstate_sid = 0\nleft JOIN v_bewegungen vb ON vb.source_sid = t.sid AND vb.source_typ = 'transaktion'\nWHERE s.fk_recordstate_sid = 0 and s.validto ISNULL or s.validto > now()\nGROUP BY s.sid, s.aname\nORDER BY s.aname;",
+      "body": "SELECT \n\t\ts.sid,\n    s.aname AS \"Schuldner\",\n    to_char(\n        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_zu_sid = 4), 0) -\n        COALESCE(SUM(vb.betrag) FILTER (WHERE vb.konto_von_sid = 4), 0),\n        'FM€ 999G999G990D00'\n    ) AS \"Schuldenstand\"\nFROM schuldner s\nleft JOIN transaktion t ON t.fk_schuldner_sid = s.sid AND t.fk_recordstate_sid = 0\nleft JOIN v_bewegungen vb ON vb.source_sid = t.sid AND vb.source_typ = 'transaktion'\nWHERE s.fk_recordstate_sid = 0 and s.validto ISNULL or s.validto > now()\nGROUP BY s.sid, s.aname\nORDER BY \"Schuldenstand\" DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

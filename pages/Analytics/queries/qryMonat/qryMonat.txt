@@ -1,8 +1,9 @@
 SELECT
-    kategorie                                                AS "Kategorie",
-    betrag::float8                                           AS "Betrag",
+    kategorie                                                  AS "Kategorie",
+    farbe                                                      AS "Farbe",
+    betrag::float8                                             AS "Betrag",
     round(100.0 * betrag / nullif(monat_gesamt, 0), 1)::float8 AS "Anteil",
-    monat_gesamt::float8                                     AS "Gesamt"
+    monat_gesamt::float8                                       AS "Gesamt"
 FROM v_ausgaben_monat_kategorie
 WHERE monat = date_trunc('month', {{ (DatePicker_month.selectedDate || new Date().toISOString()) }}::timestamptz AT TIME ZONE 'Europe/Berlin')::date
   AND betrag > 0

@@ -226,6 +226,7 @@
       "label": "Datum",
       "notation": "standard",
       "originalId": "Datum",
+      "outputFormat": "DD/MM/YY",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",

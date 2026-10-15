@@ -1,0 +1,67 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 83,
+  "boxShadow": "none",
+  "defaultOptionValue": "12",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "7u3h0k8l9b",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelText": "Monate",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 40,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 84,
+  "mobileLeftColumn": 37,
+  "mobileRightColumn": 57,
+  "mobileTopRow": 77,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{qryTrend.run()}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "parentColumnSpace": 20.5625,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 60,
+  "serverSideFiltering": false,
+  "sourceData": "{{ [\n  { label: \"6 Monate\",  value: \"6\" },\n  { label: \"12 Monate\", value: \"12\" },\n  { label: \"2 Jahre\",   value: \"24\" },\n  { label: \"3 Jahre\",   value: \"36\" },\n  { label: \"5 Jahre\",   value: \"60\" },\n  { label: \"10 Jahre\",  value: \"120\" },\n  { label: \"Alles\",     value: \"0\" }\n] }}",
+  "topRow": 76,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "yfnd72vcwj",
+  "widgetName": "Select_zeitraum"
+}

@@ -1,0 +1,441 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderColor": "#E0DEDE",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderWidth": "1",
+  "bottomRow": 183,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "cachedTableData": {},
+  "canFreezeColumn": true,
+  "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+  "childStylesheet": {
+    "button": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "editActions": {
+      "discardBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "discardButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "saveBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "saveButtonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "iconButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "menuButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "menuColor": "{{appsmith.theme.colors.primaryColor}}"
+    }
+  },
+  "columnOrder": [
+    "Kategorie",
+    "Farbe",
+    "Monat",
+    "Budget",
+    "Schnitt",
+    "BudgetProzent",
+    "DiffSchnitt",
+    "HatBudget"
+  ],
+  "columnUpdatedAt": 1791213243506,
+  "columnWidthMap": {},
+  "customIsLoading": false,
+  "customIsLoadingValue": "",
+  "defaultPageSize": 0,
+  "defaultSelectedRowIndex": "-1",
+  "defaultSelectedRowIndices": [
+    0
+  ],
+  "delimiter": ",",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.Kategorie.computedValue"
+    },
+    {
+      "key": "primaryColumns.Farbe.computedValue"
+    },
+    {
+      "key": "primaryColumns.Monat.computedValue"
+    },
+    {
+      "key": "primaryColumns.Budget.computedValue"
+    },
+    {
+      "key": "primaryColumns.Schnitt.computedValue"
+    },
+    {
+      "key": "primaryColumns.BudgetProzent.computedValue"
+    },
+    {
+      "key": "primaryColumns.DiffSchnitt.computedValue"
+    },
+    {
+      "key": "cellBackground"
+    },
+    {
+      "key": "primaryColumns.Farbe.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Monat.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Budget.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Schnitt.cellBackground"
+    },
+    {
+      "key": "primaryColumns.BudgetProzent.cellBackground"
+    },
+    {
+      "key": "primaryColumns.DiffSchnitt.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Monat.textColor"
+    },
+    {
+      "key": "primaryColumns.Kategorie.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Schnitt.textColor"
+    },
+    {
+      "key": "primaryColumns.HatBudget.computedValue"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "cellBackground"
+    },
+    {
+      "key": "primaryColumns.Monat.textColor"
+    },
+    {
+      "key": "primaryColumns.Kategorie.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Monat.cellBackground"
+    },
+    {
+      "key": "primaryColumns.Schnitt.textColor"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "enableClientSideSearch": true,
+  "endOfData": false,
+  "flexVerticalAlignment": "start",
+  "horizontalAlignment": "LEFT",
+  "inlineEditingSaveOption": "ROW_LEVEL",
+  "isLoading": false,
+  "isSortable": true,
+  "isVisible": true,
+  "isVisibleDownload": true,
+  "isVisibleFilters": false,
+  "isVisiblePagination": true,
+  "isVisibleSearch": true,
+  "key": "x0h2v27ev7",
+  "label": "Data",
+  "leftColumn": 8,
+  "minWidth": 450,
+  "mobileBottomRow": 159,
+  "mobileLeftColumn": 8,
+  "mobileRightColumn": 42,
+  "mobileTopRow": 131,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 20.5625,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "primaryColumns": {
+    "Budget": {
+      "alias": "Budget",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => row.Budget ? row.Budget.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) + \"  (\" + (row.BudgetProzent ?? 0) + \" %)\" : \"—\")(currentRow) )) :  ((row) => row.Budget ? row.Budget.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }) + \"  (\" + (row.BudgetProzent ?? 0) + \" %)\" : \"—\")(currentRow)  })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "Budget",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Budget",
+      "notation": "standard",
+      "originalId": "Budget",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "BudgetProzent": {
+      "alias": "BudgetProzent",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => row.DiffSchnitt)(currentRow) )) :  ((row) => row.DiffSchnitt)(currentRow)  })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "BudgetProzent",
+      "index": 5,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "BudgetProzent",
+      "notation": "standard",
+      "originalId": "BudgetProzent",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "DiffSchnitt": {
+      "alias": "DiffSchnitt",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => row.DiffSchnitt)(currentRow) )) :  ((row) => row.DiffSchnitt)(currentRow)  })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "DiffSchnitt",
+      "index": 6,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "DiffSchnitt",
+      "notation": "standard",
+      "originalId": "DiffSchnitt",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "Farbe": {
+      "alias": "Farbe",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Farbe\"])) : Farbe })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "Farbe",
+      "index": 1,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "Farbe",
+      "notation": "standard",
+      "originalId": "Farbe",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "HatBudget": {
+      "alias": "HatBudget",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "checkbox",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"HatBudget\"])) : HatBudget })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "HatBudget",
+      "index": 7,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "HatBudget",
+      "notation": "standard",
+      "originalId": "HatBudget",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "Kategorie": {
+      "alias": "Kategorie",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => (row.Farbe || \"#999999\") + \"22\")(currentRow) )) :  ((row) => (row.Farbe || \"#999999\") + \"22\")(currentRow)  })()}}",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Kategorie\"])) : Kategorie })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "Kategorie",
+      "index": 0,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Kategorie",
+      "notation": "standard",
+      "originalId": "Kategorie",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "Monat": {
+      "alias": "Monat",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => !row.Budget ? \"\" : row.BudgetProzent > 100 ? \"#ffebee\" : row.BudgetProzent > 85 ? \"#fff8e1\" : \"#e8f5e9\")(currentRow) )) :  ((row) => !row.Budget ? \"\" : row.BudgetProzent > 100 ? \"#ffebee\" : row.BudgetProzent > 85 ? \"#fff8e1\" : \"#e8f5e9\")(currentRow)  })()}}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => (row.Monat ?? 0).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }))(currentRow) )) :  ((row) => (row.Monat ?? 0).toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }))(currentRow)  })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "Monat",
+      "index": 2,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Monat",
+      "notation": "standard",
+      "originalId": "Monat",
+      "sticky": "",
+      "textColor": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => (row.Budget && row.Monat > row.Budget) ? \"#c62828\" : \"#1b5e20\")(currentRow) )) :  ((row) => (row.Budget && row.Monat > row.Budget) ? \"#c62828\" : \"#1b5e20\")(currentRow)  })()}}",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "Schnitt": {
+      "alias": "Schnitt",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{ currentRow.Farbe + \"22\" }}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => { const s = row.Schnitt ?? 0; const d = row.DiffSchnitt ?? 0; const txt = s.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }); return s > 0 ? txt + \"  (\" + (d >= 0 ? \"▲ +\" : \"▼ \") + Math.round(d) + \" €)\" : txt; })(currentRow) )) :  ((row) => { const s = row.Schnitt ?? 0; const d = row.DiffSchnitt ?? 0; const txt = s.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' }); return s > 0 ? txt + \"  (\" + (d >= 0 ? \"▲ +\" : \"▼ \") + Math.round(d) + \" €)\" : txt; })(currentRow)  })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "Schnitt",
+      "index": 4,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Schnitt",
+      "notation": "standard",
+      "originalId": "Schnitt",
+      "sticky": "",
+      "textColor": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( ((row) => { const s = row.Schnitt ?? 0; const d = row.DiffSchnitt ?? 0; if (s <= 0) return \"#424242\"; return d > s * 0.25 ? \"#c62828\" : d < -s * 0.25 ? \"#1b5e20\" : \"#424242\"; })(currentRow) )) :  ((row) => { const s = row.Schnitt ?? 0; const d = row.DiffSchnitt ?? 0; if (s <= 0) return \"#424242\"; return d > s * 0.25 ? \"#c62828\" : d < -s * 0.25 ? \"#1b5e20\" : \"#424242\"; })(currentRow)  })()}}",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    }
+  },
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 40,
+  "searchKey": "",
+  "tableData": "{{qryVergleich.data}}",
+  "textSize": "0.875rem",
+  "topRow": 131,
+  "totalRecordsCount": 0,
+  "type": "TABLE_WIDGET_V2",
+  "version": 2,
+  "verticalAlignment": "CENTER",
+  "widgetId": "sfvibmhdas",
+  "widgetName": "Table1"
+}

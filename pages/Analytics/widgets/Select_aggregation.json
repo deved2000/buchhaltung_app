@@ -1,0 +1,67 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 90,
+  "boxShadow": "none",
+  "defaultOptionValue": "1",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "7u3h0k8l9b",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelText": "Gruppierung",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 40,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 90,
+  "mobileLeftColumn": 40,
+  "mobileRightColumn": 60,
+  "mobileTopRow": 83,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{qryTrend.run()}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "parentColumnSpace": 20.5625,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 60,
+  "serverSideFiltering": false,
+  "sourceData": "{{ [\n  { label: \"Monatlich\",   value: \"1\" },\n  { label: \"2 Monate\",    value: \"2\" },\n  { label: \"Quartal\",     value: \"3\" },\n  { label: \"4 Monate\",    value: \"4\" },\n  { label: \"Halbjahr\",    value: \"6\" },\n  { label: \"Jährlich\",    value: \"12\" }\n] }}",
+  "topRow": 83,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "vmcthaehy3",
+  "widgetName": "Select_aggregation"
+}

@@ -11,4 +11,4 @@ left JOIN transaktion t ON t.fk_schuldner_sid = s.sid AND t.fk_recordstate_sid =
 left JOIN v_bewegungen vb ON vb.source_sid = t.sid AND vb.source_typ = 'transaktion'
 WHERE s.fk_recordstate_sid = 0 and s.validto ISNULL or s.validto > now()
 GROUP BY s.sid, s.aname
-ORDER BY s.aname;
+ORDER BY "Schuldenstand" DESC;
