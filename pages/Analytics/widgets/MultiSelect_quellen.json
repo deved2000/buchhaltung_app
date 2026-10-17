@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 162,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  [\"Gehalt\"] ))(MultiSelect_quellen.options, MultiSelect_quellen.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  [\"Arbeit\"] ))(MultiSelect_quellen.options, MultiSelect_quellen.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -48,6 +48,8 @@
   "needsErrorInfo": false,
   "optionLabel": "label",
   "optionValue": "value",
+  "originalBottomRow": 162,
+  "originalTopRow": 155,
   "parentColumnSpace": 28.0625,
   "parentId": "0",
   "parentRowSpace": 10,
