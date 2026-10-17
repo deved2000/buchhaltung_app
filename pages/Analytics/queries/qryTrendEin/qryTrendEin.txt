@@ -1,0 +1,49 @@
+WITH p AS (
+  SELECT COALESCE(NULLIF('{{Select_zeitraum.selectedOptionValue}}', ''), '12')::int   AS monate,
+         COALESCE(NULLIF('{{Select_aggregation.selectedOptionValue}}', ''), '1')::int AS schritt
+),
+g AS (
+  SELECT schritt,
+         CASE WHEN monate = 0 THEN DATE '1900-01-01'
+              ELSE (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
+                    - make_interval(months => monate - 1))::date END AS ab
+  FROM p
+),
+q AS (
+  SELECT
+    (date_trunc('year', v.monat)::date
+      + make_interval(months => ((extract(month from v.monat)::int - 1) / g.schritt) * g.schritt))::date AS bucket,
+    g.schritt,
+    v.quelle,
+    v.farbe,
+    sum(v.betrag) AS betrag
+  FROM v_einnahmen_monat_quelle v, g
+  WHERE v.monat >= g.ab
+  GROUP BY 1, 2, 3, 4
+),
+t AS (
+  SELECT
+    (date_trunc('year', s.monat)::date
+      + make_interval(months => ((extract(month from s.monat)::int - 1) / g.schritt) * g.schritt))::date AS bucket,
+    sum(s.ausgaben_gesamt)  AS ausgaben_gesamt,
+    sum(s.einnahmen_gesamt) AS einnahmen_gesamt
+  FROM v_monat_summen s, g
+  WHERE s.monat >= g.ab
+  GROUP BY 1
+)
+SELECT
+  q.bucket,
+  CASE
+    WHEN q.schritt = 1  THEN to_char(q.bucket, 'MM.YYYY')
+    WHEN q.schritt = 12 THEN to_char(q.bucket, 'YYYY')
+    ELSE to_char(q.bucket, 'MM') || '–' ||
+         to_char(q.bucket + make_interval(months => q.schritt - 1), 'MM.YYYY')
+  END AS label,
+  q.quelle,
+  q.farbe,
+  q.betrag::float8            AS betrag,
+  t.ausgaben_gesamt::float8   AS ausgaben_gesamt,
+  t.einnahmen_gesamt::float8  AS einnahmen_gesamt
+FROM q
+JOIN t ON t.bucket = q.bucket
+ORDER BY q.bucket, q.quelle;

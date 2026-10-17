@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 90,
+  "bottomRow": 93,
   "boxShadow": "none",
   "defaultOptionValue": "1",
   "dynamicBindingPathList": [
@@ -20,6 +20,9 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -38,7 +41,7 @@
   "labelText": "Gruppierung",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 40,
+  "leftColumn": 36,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -47,7 +50,7 @@
   "mobileRightColumn": 60,
   "mobileTopRow": 83,
   "needsErrorInfo": false,
-  "onOptionChange": "{{qryTrend.run()}}",
+  "onOptionChange": "{{ (() => { qryTrend.run(); qryTrendEin.run(); })() }}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 20.5625,
@@ -59,7 +62,7 @@
   "rightColumn": 60,
   "serverSideFiltering": false,
   "sourceData": "{{ [\n  { label: \"Monatlich\",   value: \"1\" },\n  { label: \"2 Monate\",    value: \"2\" },\n  { label: \"Quartal\",     value: \"3\" },\n  { label: \"4 Monate\",    value: \"4\" },\n  { label: \"Halbjahr\",    value: \"6\" },\n  { label: \"Jährlich\",    value: \"12\" }\n] }}",
-  "topRow": 83,
+  "topRow": 86,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "vmcthaehy3",

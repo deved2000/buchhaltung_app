@@ -2,34 +2,48 @@ WITH p AS (
   SELECT COALESCE(NULLIF('{{Select_zeitraum.selectedOptionValue}}', ''), '12')::int   AS monate,
          COALESCE(NULLIF('{{Select_aggregation.selectedOptionValue}}', ''), '1')::int AS schritt
 ),
-basis AS (
-  SELECT v.monat, v.kategorie, v.farbe, v.betrag, p.schritt
-  FROM v_ausgaben_monat_kategorie v, p
-  WHERE p.monate = 0
-     OR v.monat >= (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
-                    - make_interval(months => p.monate - 1))::date
+g AS (
+  SELECT schritt,
+         CASE WHEN monate = 0 THEN DATE '1900-01-01'
+              ELSE (date_trunc('month', now() AT TIME ZONE 'Europe/Berlin')
+                    - make_interval(months => monate - 1))::date END AS ab
+  FROM p
 ),
-gruppiert AS (
+k AS (
   SELECT
-    (date_trunc('year', monat)::date
-      + make_interval(months => ((extract(month from monat)::int - 1) / schritt) * schritt))::date AS bucket,
-    schritt,
-    kategorie,
-    farbe,
-    sum(betrag) AS betrag
-  FROM basis
+    (date_trunc('year', v.monat)::date
+      + make_interval(months => ((extract(month from v.monat)::int - 1) / g.schritt) * g.schritt))::date AS bucket,
+    g.schritt,
+    v.kategorie,
+    v.farbe,
+    sum(v.betrag) AS betrag
+  FROM v_ausgaben_monat_kategorie v, g
+  WHERE v.monat >= g.ab
   GROUP BY 1, 2, 3, 4
+),
+t AS (
+  SELECT
+    (date_trunc('year', s.monat)::date
+      + make_interval(months => ((extract(month from s.monat)::int - 1) / g.schritt) * g.schritt))::date AS bucket,
+    sum(s.ausgaben_gesamt)  AS ausgaben_gesamt,
+    sum(s.einnahmen_gesamt) AS einnahmen_gesamt
+  FROM v_monat_summen s, g
+  WHERE s.monat >= g.ab
+  GROUP BY 1
 )
 SELECT
-  bucket,
+  k.bucket,
   CASE
-    WHEN schritt = 1  THEN to_char(bucket, 'MM.YYYY')
-    WHEN schritt = 12 THEN to_char(bucket, 'YYYY')
-    ELSE to_char(bucket, 'MM') || '–' ||
-         to_char(bucket + make_interval(months => schritt - 1), 'MM.YYYY')
+    WHEN k.schritt = 1  THEN to_char(k.bucket, 'MM.YYYY')
+    WHEN k.schritt = 12 THEN to_char(k.bucket, 'YYYY')
+    ELSE to_char(k.bucket, 'MM') || '–' ||
+         to_char(k.bucket + make_interval(months => k.schritt - 1), 'MM.YYYY')
   END AS label,
-  kategorie,
-  farbe,
-  betrag::float8 AS betrag
-FROM gruppiert
-ORDER BY bucket, kategorie;
+  k.kategorie,
+  k.farbe,
+  k.betrag::float8            AS betrag,
+  t.ausgaben_gesamt::float8   AS ausgaben_gesamt,
+  t.einnahmen_gesamt::float8  AS einnahmen_gesamt
+FROM k
+JOIN t ON t.bucket = k.bucket
+ORDER BY k.bucket, k.kategorie;

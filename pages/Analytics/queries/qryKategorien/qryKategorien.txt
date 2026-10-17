@@ -1,0 +1,4 @@
+SELECT aname AS kategorie, coalesce(farbe, '#999999') AS farbe
+FROM kategorie
+WHERE fk_recordstate_sid = 0
+ORDER BY aname;

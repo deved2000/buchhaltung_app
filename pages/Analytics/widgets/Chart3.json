@@ -1,0 +1,122 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": false,
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 216,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "chartData": {
+    "2bjgu34yx6": {
+      "data": [
+        {
+          "x": "Product1",
+          "y": 20000
+        },
+        {
+          "x": "Product2",
+          "y": 22000
+        },
+        {
+          "x": "Product3",
+          "y": 32000
+        }
+      ],
+      "seriesName": "2023"
+    }
+  },
+  "chartName": "Sales Report",
+  "chartType": "CUSTOM_ECHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n(() => {\n  const rows = qryTrendEin.data || [];\n  const perioden = [...new Set(rows.map(r => r.label))];\n  const quellen = [...new Set(rows.map(r => r.quelle))];\n  const gewaehlt = MultiSelect_quellen.selectedOptionValues || [];\n  const n = perioden.length;\n  const alsBalken = Switch_balken.isSwitchedOn;\n\n  const farbe = {}, gAus = {}, gEin = {};\n  rows.forEach(r => {\n    farbe[r.quelle] = r.farbe;\n    gAus[r.label] = r.ausgaben_gesamt;\n    gEin[r.label] = r.einnahmen_gesamt;\n  });\n\n  const alle = quellen.concat(['Einnahmen gesamt', 'Ausgaben gesamt']);\n\n  const serien = quellen.map(q => ({\n    name: q,\n    type: alsBalken ? 'bar' : 'line',\n    barMaxWidth: 40,\n    smooth: 0.3,\n    showSymbol: n <= 36,\n    symbolSize: n > 24 ? 4 : 6,\n    itemStyle: { color: farbe[q] },\n    lineStyle: { color: farbe[q], width: n > 36 ? 1.5 : 2 },\n    emphasis: { focus: 'series' },\n    data: rows.filter(r => r.quelle === q).map(r => r.betrag)\n  }));\n\n  serien.push({\n    name: 'Einnahmen gesamt',\n    type: alsBalken ? 'bar' : 'line',\n    barMaxWidth: 40,\n    smooth: 0.3,\n    showSymbol: n <= 36,\n    symbolSize: n > 24 ? 4 : 6,\n    itemStyle: { color: '#9e9e9e' },\n    lineStyle: { color: '#9e9e9e', width: 3 },\n    emphasis: { focus: 'series' },\n    data: perioden.map(p => gEin[p] ?? 0)\n  });\n\n  serien.push({\n    name: 'Ausgaben gesamt',\n    type: 'line',\n    smooth: 0.3,\n    showSymbol: n <= 36,\n    symbolSize: 7,\n    itemStyle: { color: '#c62828' },\n    lineStyle: { color: '#c62828', width: 4 },\n    z: 10,\n    emphasis: { focus: 'series' },\n    data: perioden.map(p => gAus[p] ?? 0)\n  });\n\n  return {\n    title: { text: 'Einnahmen nach Quelle', left: 'center', top: 10 },\n    tooltip: { trigger: 'axis', axisPointer: { type: alsBalken ? 'shadow' : 'line' } },\n    legend: {\n      type: 'scroll',\n      bottom: 15,\n      itemGap: 20,\n      data: gewaehlt,\n      selected: Object.fromEntries(alle.map(q => [q, gewaehlt.includes(q)]))\n    },\n    grid: { left: 20, right: 40, top: 60, bottom: 80, containLabel: true },\n    xAxis: {\n      type: 'category',\n      boundaryGap: alsBalken,\n      axisLabel: {\n        margin: 12,\n        rotate: n > 14 ? 45 : 0,\n        interval: n > 40 ? Math.ceil(n / 20) - 1 : 0\n      },\n      data: perioden\n    },\n    yAxis: { type: 'value', min: 0, axisLabel: { formatter: '{value} €' } },\n    series: serien\n  };\n})()\n))(Chart3.chartType) }}",
+  "customFusionChartConfig": {
+    "dataSource": {
+      "chart": {
+        "alignCaptionWithCanvas": 1,
+        "canvasPadding": "0",
+        "caption": "Sales Report",
+        "captionAlignment": "center",
+        "captionFontColor": "#231F20",
+        "captionFontSize": "24",
+        "captionPadding": "20",
+        "chartBottomMargin": "10",
+        "chartLeftMargin": "20",
+        "chartRightMargin": "40",
+        "chartTopMargin": "10",
+        "labelFontColor": "#716e6e",
+        "labelFontSize": "12",
+        "legendIconAlpha": "100",
+        "legendIconBgAlpha": "100",
+        "legendIconSides": "4",
+        "legendPosition": "top",
+        "theme": "fusion",
+        "xAxisName": "Product Line",
+        "xAxisNameFontColor": "#716e6e",
+        "xAxisNameFontSize": "14",
+        "yAxisName": "Revenue($)",
+        "yAxisNameFontColor": "#716e6e",
+        "yAxisNameFontSize": "14",
+        "yAxisValueFontColor": "#716e6e",
+        "yAxisValueFontSize": "12"
+      },
+      "data": [
+        {
+          "label": "Product1",
+          "value": 20000
+        },
+        {
+          "label": "Product2",
+          "value": 22000
+        },
+        {
+          "label": "Product3",
+          "value": 32000
+        }
+      ]
+    },
+    "type": "column2d"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "customEChartConfig"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "rjw0tc99an",
+  "labelOrientation": "auto",
+  "leftColumn": 6,
+  "minWidth": 450,
+  "mobileBottomRow": 183,
+  "mobileLeftColumn": 7,
+  "mobileRightColumn": 31,
+  "mobileTopRow": 151,
+  "needsErrorInfo": true,
+  "parentColumnSpace": 28.0625,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 60,
+  "showDataPointLabel": false,
+  "topRow": 164,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "xcf5s906rb",
+  "widgetName": "Chart3",
+  "xAxisName": "Product Line",
+  "yAxisName": "Revenue($)"
+}
